@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:types": "contentful-typescript-codegen --output src/@types/contentful.d.ts"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -19,5 +20,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "contentful": "^9.2.15",
+    "contentful-management": "^10.26.0",
+    "contentful-typescript-codegen": "^3.4.0",
+    "dotenv": "^16.0.3",
+    "prettier": "^2.8.1"
   }
 }
