@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { Entry } from 'contentful'
 
 import { ICafeFields } from '../../src/@types/contentful'
+import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
 import { getCafeContent } from '../../src/lib/get-cafe-content'
 
@@ -12,12 +13,17 @@ type Props = {
 }
 export const getStaticProps: GetStaticProps<Props> = async (props) => {
   const [id] = [props.params?.id].flat(1)
-  if (id) {
-    const page = await getCafeContent(id)
 
-    return { props: { page } }
+  if (id) {
+    try {
+      const page = await getCafeContent(id)
+      return { props: { page } }
+    } catch (e) {
+      console.error('test')
+      throw e
+    }
   } else {
-    throw new Error()
+    throw new Error('page id is not exists')
   }
 }
 
@@ -28,13 +34,16 @@ export const getStaticPaths: GetStaticPaths = () => {
   }
 }
 
-const CafePage: React.FC<Props> = (props) => {
-  console.log(props)
+const Cafe: React.FC<Props> = (props) => {
+  if (!props.page) {
+    return <></>
+  }
+
   return (
     <Layout title={'title'}>
-      <div>title</div>
+      <CafePage {...props.page.fields} />
     </Layout>
   )
 }
 
-export default CafePage
+export default Cafe

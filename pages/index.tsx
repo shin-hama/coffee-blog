@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 
 import { EntryCollection } from 'contentful'
 
@@ -21,11 +22,12 @@ export default function Home({ cafes }: Props) {
     <Layout title='tokyo cafe catalog'>
       <div>
         {items.map((item) => (
-          <PageCard
-            key={item.sys.id}
-            title={item.fields.name}
-            img={item.fields.thumbnail.fields.file.url}
-          />
+          <Link key={item.sys.id} href={`cafes/${item.sys.id}`}>
+            <PageCard
+              title={item.fields.name}
+              img={item.fields.thumbnail.fields.file.url}
+            />
+          </Link>
         ))}
       </div>
     </Layout>
