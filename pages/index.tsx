@@ -11,8 +11,8 @@ export const getStaticProps = async () => {
 
   return { props: { cafes: JSON.parse(JSON.stringify(cafes)) } }
 }
-export default function Home(props: Props) {
-  console.log(props)
+export default function Home({ cafes }: Props) {
+  const { items } = cafes
   return (
     <>
       <Head>
@@ -22,7 +22,13 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div></div>
+        <div>
+          {items.map((item) => (
+            <div key={item.sys.id}>
+              {item.fields.name}: visited at {item.fields.visited}
+            </div>
+          ))}
+        </div>
       </main>
     </>
   )
