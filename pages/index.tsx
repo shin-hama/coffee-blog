@@ -5,7 +5,7 @@ import { EntryCollection } from 'contentful'
 import { ICafeFields } from '../src/@types/contentful'
 import Layout from '../src/components/Layout'
 import PageCard from '../src/components/PageCard'
-import { getAllCafes } from '../src/lib/getAllCafes'
+import { getAllCafes } from '../src/lib/get-all-cafes'
 
 type Props = {
   cafes: EntryCollection<ICafeFields>
