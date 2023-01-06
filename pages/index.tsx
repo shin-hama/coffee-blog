@@ -1,6 +1,10 @@
+import * as React from 'react'
+
 import { EntryCollection } from 'contentful'
+
 import { ICafeFields } from '../src/@types/contentful'
 import Layout from '../src/components/Layout'
+import PageCard from '../src/components/PageCard'
 import { getAllCafes } from '../src/lib/getAllCafes'
 
 type Props = {
@@ -14,12 +18,14 @@ export const getStaticProps = async () => {
 export default function Home({ cafes }: Props) {
   const { items } = cafes
   return (
-    <Layout title="tokyo cafe catalog">
+    <Layout title='tokyo cafe catalog'>
       <div>
         {items.map((item) => (
-          <div key={item.sys.id}>
-            {item.fields.name}: visited at {item.fields.visited}
-          </div>
+          <PageCard
+            key={item.sys.id}
+            title={item.fields.name}
+            img={item.fields.thumbnail.fields.file.url}
+          ></PageCard>
         ))}
       </div>
     </Layout>
