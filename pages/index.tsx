@@ -25,7 +25,7 @@ export default function Home({ cafes }: Props) {
             key={item.sys.id}
             title={item.fields.name}
             img={item.fields.thumbnail.fields.file.url}
-          ></PageCard>
+          />
         ))}
       </div>
     </Layout>
