@@ -28,7 +28,7 @@ const CafePage: React.FC<Props> = (cafe) => {
           ))}
         </Stack>
         <Research name={cafe.name} />
-        <Information />
+        <Information information={cafe.information.fields} />
       </Stack>
     </article>
   )
