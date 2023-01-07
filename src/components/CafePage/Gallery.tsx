@@ -12,30 +12,18 @@ const Gallery: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = React.useState(0)
 
   return (
-    <Box
-      display='flex'
-      justifyContent='center'
-      width='100%'
-      maxHeight='400px'
-      sx={{ aspectRatio: '1/1' }}
-    >
+    <Box width='100%' maxHeight='400px' sx={{ aspectRatio: '1/1' }}>
       <Stack spacing={2} height='100%'>
-        <Box
-          position='relative'
-          color='white'
-          height='80%'
-          sx={{ aspectRatio: '4/3' }}
-        >
+        <Box position='relative' color='white' height='80%'>
           <ContentfulImage
             src={images[index]}
             alt={''}
             fill
             style={{
-              objectFit: 'cover'
+              objectFit: 'contain'
             }}
           />
         </Box>
-
         <Stack spacing={2} direction='row' overflow={'auto'} height='20%'>
           {images.map((image, i) => (
             <Box

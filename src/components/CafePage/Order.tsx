@@ -5,25 +5,26 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
+import { ICafeOrderFields } from '../../@types/contentful'
 import ContentfulImage from '../ContentfulImage'
 
 type Props = {
-  src: string
+  item: ICafeOrderFields
 }
-const Order: React.FC<Props> = ({ src }) => {
+const Order: React.FC<Props> = ({ item }) => {
   return (
     <Card>
-      <Box position='relative' width='100%' height='100%'>
+      <Box position='relative' width='100%' sx={{ aspectRatio: '4/3' }}>
         <ContentfulImage
-          src={src}
+          src={item.photo.fields.file.url}
           alt=''
           fill
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'cover' }}
         />
       </Box>
       <CardContent>
-        <Typography variant='h4'>Name</Typography>
-        <Typography variant='subtitle2'>500 円</Typography>
+        <Typography variant='h4'>{item.name}</Typography>
+        <Typography variant='subtitle2'>{item.price} 円</Typography>
       </CardContent>
     </Card>
   )

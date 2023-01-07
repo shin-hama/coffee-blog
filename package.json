@@ -10,6 +10,7 @@
     "generate:types": "contentful-typescript-codegen --output src/@types/contentful.d.ts"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.16.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
