@@ -12,32 +12,45 @@ const Gallery: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = React.useState(0)
 
   return (
-    <Box width='100%' height='100vh'>
-      <Stack spacing={3} padding={2}>
+    <Box
+      display='flex'
+      justifyContent='center'
+      width='100%'
+      maxHeight='400px'
+      sx={{ aspectRatio: '1/1' }}
+    >
+      <Stack spacing={2} height='100%'>
         <Box
           position='relative'
           color='white'
-          width='100%'
-          sx={{ aspectRatio: '1/1' }}
+          height='80%'
+          sx={{ aspectRatio: '4/3' }}
         >
           <ContentfulImage
             src={images[index]}
             alt={''}
             fill
-            style={{ objectFit: 'contain' }}
+            style={{
+              objectFit: 'cover'
+            }}
           />
         </Box>
 
-        <Stack spacing={2} direction='row' overflow={'auto'}>
+        <Stack spacing={2} direction='row' overflow={'auto'} height='20%'>
           {images.map((image, i) => (
             <Box
               position='relative'
+              height='100%'
               key={image}
-              bgcolor='black'
-              color='white'
+              sx={{ aspectRatio: '1/1' }}
               onClick={() => setIndex(i)}
             >
-              <ContentfulImage src={image} alt={''} width={100} height={100} />
+              <ContentfulImage
+                src={image}
+                alt={''}
+                fill
+                style={{ objectFit: 'cover' }}
+              />
             </Box>
           ))}
         </Stack>

@@ -40,7 +40,7 @@ const Cafe: React.FC<Props> = (props) => {
   }
 
   return (
-    <Layout title={'title'}>
+    <Layout title={props.page.fields.name}>
       <CafePage {...props.page.fields} />
     </Layout>
   )
