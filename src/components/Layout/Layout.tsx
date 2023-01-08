@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 
+import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 
 import Footer from './Footer'
@@ -19,9 +20,9 @@ const Layout: React.FC<Props> = ({ children, title }) => {
       </Head>
       <Container maxWidth={false}>
         <main>
-          <Container maxWidth='md' sx={{ py: 4 }}>
+          <Box mx='auto' maxWidth='md' sx={{ py: 4 }}>
             {children}
-          </Container>
+          </Box>
         </main>
         <Footer />
       </Container>

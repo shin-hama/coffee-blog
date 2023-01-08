@@ -9,6 +9,9 @@ export interface ICafeFields {
   /** Slug */
   slug: string
 
+  /** City */
+  city: string
+
   /** Visited */
   visited: string
 
@@ -32,6 +35,9 @@ export interface ICafeFields {
 
   /** Instagram */
   instagram?: string | undefined
+
+  /** Location */
+  location?: Document | undefined
 }
 
 /** 紹介するカフェの情報 */
@@ -56,9 +62,6 @@ export interface ICafe extends Entry<ICafeFields> {
 export interface ICafeInformationFields {
   /** Name */
   name: string
-
-  /** Location */
-  location: { lat: number; lon: number }
 
   /** Holidays */
   holidays: ('月' | '火' | '水' | '木' | '金' | '土' | '日')[]
