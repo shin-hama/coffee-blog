@@ -46,36 +46,45 @@ type Row = {
   label: string
 }
 const rows: Array<Row> = [
-  { key: 'name', label: '店名' },
   { key: 'holidays', label: '定休日' },
   { key: 'openingHour', label: '開店時間' },
   { key: 'seats', label: '席数' },
   { key: 'takeout', label: 'テイクアウト' },
   { key: 'wifi', label: 'WiFi' },
   { key: 'smoking', label: 'タバコ' },
-  { key: 'payment', label: '支払い方法' },
-  { key: 'location', label: '住所' }
+  { key: 'payment', label: '支払い方法' }
 ]
 
 type Props = {
   information: ICafeInformationFields
 }
 const Information: React.FC<Props> = ({ information }) => {
+  const query = `q=${information.name}&key=${googleMapsEmbedApiKey}`
+
   return (
-    <TableContainer>
-      <Table size='small'>
-        <TableBody>
-          {rows.map(({ key, label }) => (
-            <TableRow key={key}>
-              <TableCell>{label}</TableCell>
-              <TableCell>
-                <Renderer value={information[key]} />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <TableContainer>
+        <Table size='small'>
+          <TableBody>
+            {rows.map(({ key, label }) => (
+              <TableRow key={key}>
+                <TableCell>{label}</TableCell>
+                <TableCell>
+                  <Renderer value={information[key]} />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <iframe
+        width='100%'
+        style={{ border: 0, aspectRatio: '1/1', maxHeight: '400px' }}
+        referrerPolicy='no-referrer-when-downgrade'
+        src={`https://www.google.com/maps/embed/v1/place?${query}&zoom=14`}
+        allowFullScreen
+      ></iframe>
+    </>
   )
 }
 
