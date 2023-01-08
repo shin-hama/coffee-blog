@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 
 import {
   faFacebook,
@@ -10,6 +9,8 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Stack from '@mui/material/Stack'
 import SvgIcon from '@mui/material/SvgIcon'
+
+import { NavLink } from '../Link'
 
 const iconParser = (link: string) => {
   const host = new URL(link).hostname
@@ -31,11 +32,11 @@ const Links: React.FC<Props> = ({ links }) => {
   return (
     <Stack direction='row' spacing={1} alignItems='center'>
       {links.map((link) => (
-        <Link key={link} href={link}>
+        <NavLink key={link} href={link}>
           <SvgIcon>
             <FontAwesomeIcon icon={iconParser(link)} />
           </SvgIcon>
-        </Link>
+        </NavLink>
       ))}
     </Stack>
   )
