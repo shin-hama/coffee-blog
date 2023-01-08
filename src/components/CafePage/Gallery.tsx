@@ -14,7 +14,12 @@ const Gallery: React.FC<Props> = ({ images }) => {
   return (
     <Box width='100%' maxHeight='400px' sx={{ aspectRatio: '1/1' }}>
       <Stack spacing={2} height='100%'>
-        <Box position='relative' color='white' height='80%'>
+        <Box
+          position='relative'
+          color='white'
+          height='80%'
+          bgcolor={(theme) => theme.palette.text.primary}
+        >
           <ContentfulImage
             src={images[index]}
             alt={''}
