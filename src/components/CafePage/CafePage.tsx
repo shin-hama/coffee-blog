@@ -25,8 +25,8 @@ const CafePage: React.FC<Props> = (cafe) => {
           <Typography variant='h2'>レビュー</Typography>
           {documentToReactComponents(cafe.description)}
         </Box>
+        <Typography variant='h2'>注文品</Typography>
         <Box>
-          <Typography variant="h2">注文品</Typography>
           <Grid container spacing={2}>
             {cafe.orders.map((item) => (
               <Grid item key={item.sys.id} xs={6} md={4}>
@@ -36,6 +36,7 @@ const CafePage: React.FC<Props> = (cafe) => {
           </Grid>
         </Box>
         <Research name={cafe.name} />
+        <Typography variant='h2'>Cafe 情報</Typography>
         <Information information={cafe.information.fields} />
       </Stack>
     </article>
