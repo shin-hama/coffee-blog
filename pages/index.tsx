@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Grid from '@mui/material/Grid'
 import { EntryCollection } from 'contentful'
 
 import { ICafeFields } from '../src/@types/contentful'
@@ -20,16 +21,18 @@ export default function Home({ cafes }: Props) {
   const { items } = cafes
   return (
     <Layout title='tokyo cafe catalog'>
-      <div>
+      <Grid container spacing={4}>
         {items.map((item) => (
-          <NavLink key={item.sys.id} href={`cafes/${item.sys.id}`}>
-            <PageCard
-              title={item.fields.name}
-              img={item.fields.thumbnail.fields.file.url}
-            />
-          </NavLink>
+          <Grid key={item.sys.id} item xs={12} sm={6}>
+            <NavLink href={`cafes/${item.sys.id}`}>
+              <PageCard
+                title={item.fields.name}
+                img={item.fields.thumbnail.fields.file.url}
+              />
+            </NavLink>
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </Layout>
   )
 }
