@@ -1,7 +1,9 @@
 import * as React from 'react'
 
-import { AppBar, Toolbar, Typography } from '@mui/material'
+import AppBar from '@mui/material/AppBar'
 import Slide from '@mui/material/Slide'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
 import { NavLink } from '../Link'
