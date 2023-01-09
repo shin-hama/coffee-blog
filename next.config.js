@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.ctfassets.net'] //　←外部ファイルによって記述が変わります
+    domains: ['images.ctfassets.net']
   }
 }
 

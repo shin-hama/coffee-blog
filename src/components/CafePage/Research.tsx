@@ -14,7 +14,7 @@ type Props = {
   name: string
 }
 const Research: React.FC<Props> = ({ name }) => {
-  const query = React.useMemo(() => name.replace(' ', ''), [name])
+  const query = React.useMemo(() => name.replaceAll(' ', ''), [name])
   return (
     <NavLink href={`https://www.instagram.com/explore/tags/${query}/`}>
       <Card sx={{ width: '100%' }}>
