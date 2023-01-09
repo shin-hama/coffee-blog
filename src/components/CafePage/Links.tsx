@@ -14,11 +14,12 @@ import { NavLink } from '../Link'
 
 const iconParser = (link: string) => {
   const host = new URL(link).hostname
-  if (host.startsWith('twitter')) {
+  console.log(host)
+  if (host.includes('twitter')) {
     return faTwitter
-  } else if (host.startsWith('instagram')) {
+  } else if (host.includes('instagram')) {
     return faInstagram
-  } else if (host.startsWith('facebook')) {
+  } else if (host.includes('facebook')) {
     return faFacebook
   } else {
     return faGlobe
