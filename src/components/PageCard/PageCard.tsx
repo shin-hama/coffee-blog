@@ -1,18 +1,19 @@
 import * as React from 'react'
 
+import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
+import { ICafeFields } from '../../@types/contentful'
 import ContentfulImage from '../ContentfulImage'
 
-type Props = {
+type Props = Pick<ICafeFields, 'city' | 'name' | 'visited'> & {
   img?: string
-  title: string
 }
-const PageCard: React.FC<Props> = ({ img, title }) => {
+const PageCard: React.FC<Props> = ({ img, name, city, visited }) => {
   return (
     <Card>
       {img && (
@@ -30,7 +31,11 @@ const PageCard: React.FC<Props> = ({ img, title }) => {
       )}
       <CardContent>
         <Stack spacing={1}>
-          <Typography variant='subtitle1'>{title}</Typography>
+          <Typography variant='h2'>{name}</Typography>
+          <Box>
+            <Typography variant='subtitle1'>Visited at: {visited}</Typography>
+            <Typography variant='subtitle1'>{city}</Typography>
+          </Box>
         </Stack>
       </CardContent>
     </Card>
