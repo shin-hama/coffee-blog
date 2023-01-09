@@ -6,6 +6,8 @@ import Stack from '@mui/material/Stack'
 import SvgIcon from '@mui/material/SvgIcon'
 import Typography from '@mui/material/Typography'
 
+import { NavLink } from '../Link'
+
 const Footer = () => {
   return (
     <footer>
@@ -18,9 +20,11 @@ const Footer = () => {
       >
         <Typography>Copyright 2022 - Tokyo Cafe Catalog</Typography>
         <Stack direction='row' spacing={2}>
-          <SvgIcon>
-            <FontAwesomeIcon icon={faInstagram} />
-          </SvgIcon>
+          <NavLink href='https://www.instagram.com/tokyo_cafe_catalog/'>
+            <SvgIcon>
+              <FontAwesomeIcon icon={faInstagram} />
+            </SvgIcon>
+          </NavLink>
         </Stack>
       </Stack>
     </footer>
