@@ -10,10 +10,10 @@ import Typography from '@mui/material/Typography'
 import { ICafeFields } from '../../@types/contentful'
 import ContentfulImage from '../ContentfulImage'
 
-type Props = Pick<ICafeFields, 'city' | 'name' | 'visited'> & {
+type Props = Pick<ICafeFields, 'city' | 'title' | 'visited'> & {
   img?: string
 }
-const PageCard: React.FC<Props> = ({ img, name, city, visited }) => {
+const PageCard: React.FC<Props> = ({ img, title, city, visited }) => {
   return (
     <Card>
       {img && (
@@ -31,7 +31,7 @@ const PageCard: React.FC<Props> = ({ img, name, city, visited }) => {
       )}
       <CardContent>
         <Stack spacing={1}>
-          <Typography variant='h2'>{name}</Typography>
+          <Typography variant='h2'>{title}</Typography>
           <Box>
             <Typography variant='subtitle1'>Visited at: {visited}</Typography>
             <Typography variant='subtitle1'>{city}</Typography>

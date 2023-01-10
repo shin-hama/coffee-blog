@@ -12,12 +12,12 @@ import { IBlog, ICafe } from '../@types/contentful'
 import ContentfulImage from './ContentfulImage'
 import { Link } from './Link'
 
-const isPostEntry = (target: unknown): target is IBlog | ICafe => {
+const isPostEntry = (target: any): target is IBlog | ICafe => {
   return (
     target !== null &&
-    typeof target === 'object' &&
-    target.sys?.contentType?.sys?.id === 'cafe' ||
-    target.sys?.contentType?.sys?.id === 'blog'
+    target !== undefined &&
+    (target.sys?.contentType?.sys?.id === 'cafe' ||
+      target.sys?.contentType?.sys?.id === 'blog')
   )
 }
 
@@ -51,7 +51,9 @@ const renderOption: Options = {
           </Link>
         )
       } else {
-        console.warn(`Not support to embed this entry: ${entry.sys.contentType.sys.id}`)
+        console.warn(
+          `Not support to embed this entry: ${entry.sys.contentType.sys.id}`
+        )
         return
       }
     },
