@@ -2,6 +2,46 @@
 import { Document } from '@contentful/rich-text-types'
 import { Asset, Entry } from 'contentful'
 
+export interface IBlogFields {
+  /** Title */
+  title: string
+
+  /** slug */
+  slug: string
+
+  /** Cover Image */
+  coverImage: Asset
+
+  /** Description */
+  description: string
+
+  /** Content */
+  content: Document
+
+  /** Created at */
+  createdAt: string
+
+  /** Updated at */
+  updatedAt?: string | undefined
+}
+
+export interface IBlog extends Entry<IBlogFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'blog'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
 export interface ICafeFields {
   /** Name */
   name: string
@@ -35,9 +75,6 @@ export interface ICafeFields {
 
   /** Instagram */
   instagram?: string | undefined
-
-  /** Location */
-  location?: Document | undefined
 }
 
 /** 紹介するカフェの情報 */
@@ -64,7 +101,17 @@ export interface ICafeInformationFields {
   name: string
 
   /** Holidays */
-  holidays: ('月' | '火' | '水' | '木' | '金' | '土' | '日')[]
+  holidays: (
+    | '月'
+    | '火'
+    | '水'
+    | '木'
+    | '金'
+    | '土'
+    | '日'
+    | 'なし'
+    | '不定休'
+  )[]
 
   /** Takeout */
   takeout: boolean
@@ -190,9 +237,14 @@ export interface IPerson extends Entry<IPersonFields> {
   }
 }
 
-export type CONTENT_TYPE = 'cafe' | 'cafeInformation' | 'cafeOrder' | 'person'
+export type CONTENT_TYPE =
+  | 'blog'
+  | 'cafe'
+  | 'cafeInformation'
+  | 'cafeOrder'
+  | 'person'
 
-export type IEntry = ICafe | ICafeInformation | ICafeOrder | IPerson
+export type IEntry = IBlog | ICafe | ICafeInformation | ICafeOrder | IPerson
 
 export type LOCALE_CODE = 'en-US'
 
