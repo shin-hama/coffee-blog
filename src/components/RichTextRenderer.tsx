@@ -8,8 +8,18 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
+import { IBlog, ICafe } from '../@types/contentful'
 import ContentfulImage from './ContentfulImage'
 import { Link } from './Link'
+
+const isPostEntry = (target: unknown): target is IBlog | ICafe => {
+  return (
+    target !== null &&
+    typeof target === 'object' &&
+    target.sys?.contentType?.sys?.id === 'cafe' ||
+    target.sys?.contentType?.sys?.id === 'blog'
+  )
+}
 
 const renderOption: Options = {
   renderNode: {
@@ -28,7 +38,22 @@ const renderOption: Options = {
     [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
       console.log(node)
       console.log(children)
-      return <>link to entry</>
+      const entry = node.data.target
+      if (isPostEntry(entry)) {
+        const path = `/${entry.sys.contentType.sys.id}s/${entry.sys.id}`
+
+        return (
+          <Link href={path}>
+            <div>
+              <p>{entry.fields.title}</p>
+              <p>{entry.fields.description}</p>
+            </div>
+          </Link>
+        )
+      } else {
+        console.warn(`Not support to embed this entry: ${entry.sys.contentType.sys.id}`)
+        return
+      }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
       return <Typography paragraph>{children}</Typography>

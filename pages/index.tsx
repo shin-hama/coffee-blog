@@ -26,7 +26,7 @@ export default function Home({ cafes }: Props) {
           <Grid key={item.sys.id} item xs={12} sm={6}>
             <NavLink href={`cafes/${item.sys.id}`}>
               <PageCard
-                name={item.fields.name}
+                name={item.fields.title}
                 city={item.fields.city}
                 visited={item.fields.visited}
                 img={item.fields.thumbnail.fields.file.url}

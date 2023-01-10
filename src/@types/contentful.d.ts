@@ -46,8 +46,8 @@ export interface IBlog extends Entry<IBlogFields> {
 }
 
 export interface ICafeFields {
-  /** Name */
-  name: string
+  /** Title */
+  title: string
 
   /** Slug */
   slug: string
@@ -65,7 +65,10 @@ export interface ICafeFields {
   photos: Asset[]
 
   /** Description */
-  description: Document
+  description?: string | undefined
+
+  /** Content */
+  content: Document
 
   /** Links */
   links: string[]
