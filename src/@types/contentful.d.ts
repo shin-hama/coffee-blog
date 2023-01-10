@@ -18,6 +18,9 @@ export interface IBlogFields {
   /** Content */
   content: Document
 
+  /** Tags */
+  tags?: ITag[] | undefined
+
   /** Created at */
   createdAt: string
 
@@ -75,6 +78,9 @@ export interface ICafeFields {
 
   /** Instagram */
   instagram?: string | undefined
+
+  /** Tags */
+  tags?: ITag[] | undefined
 }
 
 /** 紹介するカフェの情報 */
@@ -237,14 +243,58 @@ export interface IPerson extends Entry<IPersonFields> {
   }
 }
 
+export interface ITagFields {
+  /** Title */
+  title: string
+
+  /** slug */
+  slug: string
+
+  /** Thumbnail */
+  thumbnail?: Asset | undefined
+
+  /** Description */
+  description?: string | undefined
+
+  /** Content */
+  content?: Document | undefined
+
+  /** Recommends */
+  recommends?: (IBlog | ICafe)[] | undefined
+}
+
+export interface ITag extends Entry<ITagFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'tag'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
 export type CONTENT_TYPE =
   | 'blog'
   | 'cafe'
   | 'cafeInformation'
   | 'cafeOrder'
   | 'person'
+  | 'tag'
 
-export type IEntry = IBlog | ICafe | ICafeInformation | ICafeOrder | IPerson
+export type IEntry =
+  | IBlog
+  | ICafe
+  | ICafeInformation
+  | ICafeOrder
+  | IPerson
+  | ITag
 
 export type LOCALE_CODE = 'en-US'
 
