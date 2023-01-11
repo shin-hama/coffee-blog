@@ -8,9 +8,10 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
-import { IBlog, ICafe } from '../@types/contentful'
+import { IBlog, ICafe } from '../../@types/contentful'
+import { Link } from '../Link'
 import ContentfulImage from './ContentfulImage'
-import { Link } from './Link'
+import EmbeddedAssetCard from './EmbeddedAssetCard'
 
 const isPostEntry = (target: any): target is IBlog | ICafe => {
   return (
@@ -43,12 +44,12 @@ const renderOption: Options = {
         const path = `/${entry.sys.contentType.sys.id}s/${entry.sys.id}`
 
         return (
-          <Link href={path}>
-            <div>
-              <p>{entry.fields.title}</p>
-              <p>{entry.fields.description}</p>
-            </div>
-          </Link>
+          <EmbeddedAssetCard
+            href={path}
+            title={entry.fields.title}
+            description={entry.fields.description}
+            image={entry.fields.thumbnail}
+          />
         )
       } else {
         console.warn(

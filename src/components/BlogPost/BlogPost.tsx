@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Stack from '@mui/material/Stack'
 
 import { IBlogFields } from '../../@types/contentful'
-import RichTextRenderer from '../RichTextRenderer'
+import RichTextRenderer from '../contentful/RichTextRenderer'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 

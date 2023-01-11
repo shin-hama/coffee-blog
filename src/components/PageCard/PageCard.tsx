@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeFields } from '../../@types/contentful'
-import ContentfulImage from '../ContentfulImage'
+import ContentfulImage from '../contentful/ContentfulImage'
 
 type Props = Pick<ICafeFields, 'city' | 'title' | 'visited'> & {
   img?: string

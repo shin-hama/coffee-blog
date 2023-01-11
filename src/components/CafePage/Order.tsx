@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 import { ICafeOrderFields } from '../../@types/contentful'
-import ContentfulImage from '../ContentfulImage'
+import ContentfulImage from '../contentful/ContentfulImage'
 
 type Props = {
   item: ICafeOrderFields
