@@ -18,7 +18,6 @@ type Props = {
 }
 /**
  * Contentful の Embedded Asset によるリンクをカード形式で表示するためのコンポーネント
- * @param param0
  * @returns
  */
 const EmbeddedAssetCard: React.FC<Props> = ({
@@ -38,21 +37,23 @@ const EmbeddedAssetCard: React.FC<Props> = ({
           sx={{ maxHeight: '140px' }}
         >
           <CardContent>
-            <Typography variant='h4'>{title}</Typography>
+            <Typography variant='h4' noWrap>
+              {title}
+            </Typography>
             <Typography
-              variant='body1'
+              variant='caption'
               sx={{
                 display: '-webkit-box',
                 overflow: 'hidden',
                 WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 2
+                WebkitLineClamp: 3
               }}
             >
               {description}
             </Typography>
           </CardContent>
           {image && (
-            <CardMedia>
+            <CardMedia sx={{ height: '100%' }}>
               <Box
                 position='relative'
                 height='100%'
