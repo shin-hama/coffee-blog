@@ -48,7 +48,7 @@ const renderOption: Options = {
             href={path}
             title={entry.fields.title}
             description={entry.fields.description}
-            image={entry.fields.thumbnail}
+            image={entry.fields.thumbnail.fields.file.url}
           />
         )
       } else {

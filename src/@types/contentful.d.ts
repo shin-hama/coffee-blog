@@ -9,8 +9,8 @@ export interface IBlogFields {
   /** slug */
   slug: string
 
-  /** Cover Image */
-  coverImage: Asset
+  /** Thumbnail */
+  thumbnail: Asset
 
   /** Description */
   description: string
