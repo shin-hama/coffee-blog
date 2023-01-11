@@ -15,7 +15,6 @@ import Research from './Research'
 
 type Props = ICafeFields
 const CafePage: React.FC<Props> = (cafe) => {
-  console.log(cafe)
   return (
     <article>
       <Stack spacing={4}>

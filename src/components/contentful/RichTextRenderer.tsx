@@ -37,8 +37,6 @@ const renderOption: Options = {
       )
     },
     [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-      console.log(node)
-      console.log(children)
       const entry = node.data.target
       if (isPostEntry(entry)) {
         const path = `/${entry.sys.contentType.sys.id}s/${entry.sys.id}`
