@@ -1,19 +1,15 @@
 import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import { Entry } from 'contentful'
-
-import { ICafeFields } from '../../src/@types/contentful'
+import { ICafe } from '../../src/@types/contentful'
 import { IPost, isPostEntry } from '../../src/@types/verify-types'
+import BlogLayout from '../../src/components/BlogLayout'
 import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
-import EntryLinkCard from '../../src/components/contentful/EntryLinkCard'
 import { getCafeContent, getCafeRef } from '../../src/lib/get-cafe-content'
 
 type Props = {
-  page: Entry<ICafeFields>
+  page: ICafe
   items: Array<IPost>
 }
 export const getStaticProps: GetStaticProps<Props> = async (props) => {
@@ -27,7 +23,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
         props: { page, items: ref.items.filter(isPostEntry) }
       }
     } catch (e) {
-      console.error('test')
+      console.error(e)
       throw e
     }
   } else {
@@ -49,15 +45,9 @@ const Cafe: React.FC<Props> = ({ page, items }) => {
 
   return (
     <Layout title={page.fields.title}>
-      <CafePage {...page.fields} />
-      {items.length > 0 && (
-        <Stack spacing={2}>
-          <Typography variant='h2'>おすすめ記事</Typography>
-          {items.map((item) => (
-            <EntryLinkCard key={item.sys.id} {...item} />
-          ))}
-        </Stack>
-      )}
+      <BlogLayout post={page} recommendItems={items}>
+        <CafePage {...page.fields} />
+      </BlogLayout>
     </Layout>
   )
 }
