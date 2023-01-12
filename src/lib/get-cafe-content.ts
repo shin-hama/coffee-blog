@@ -13,6 +13,7 @@ export const getCafeRef = async (id: string) => {
   const contentful = getClient()
 
   return await contentful.getEntries({
-    links_to_entry: id
+    links_to_entry: id,
+    include: 0
   })
 }

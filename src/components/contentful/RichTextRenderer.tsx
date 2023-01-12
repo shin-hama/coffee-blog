@@ -8,19 +8,10 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
-import { IBlog, ICafe } from '../../@types/contentful'
 import { Link } from '../Link'
 import ContentfulImage from './ContentfulImage'
 import EmbeddedAssetCard from './EmbeddedAssetCard'
-
-const isPostEntry = (target: any): target is IBlog | ICafe => {
-  return (
-    target !== null &&
-    target !== undefined &&
-    (target.sys?.contentType?.sys?.id === 'cafe' ||
-      target.sys?.contentType?.sys?.id === 'blog')
-  )
-}
+import { isPostEntry } from '../../@types/verify-types'
 
 const renderOption: Options = {
   renderNode: {
