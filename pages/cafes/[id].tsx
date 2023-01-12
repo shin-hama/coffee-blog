@@ -1,12 +1,15 @@
 import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import { Entry } from 'contentful'
 
 import { ICafeFields } from '../../src/@types/contentful'
 import { IPost, isPostEntry } from '../../src/@types/verify-types'
 import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
+import EntryLinkCard from '../../src/components/contentful/EntryLinkCard'
 import { getCafeContent, getCafeRef } from '../../src/lib/get-cafe-content'
 
 type Props = {
@@ -39,15 +42,22 @@ export const getStaticPaths: GetStaticPaths = () => {
   }
 }
 
-const Cafe: React.FC<Props> = (props) => {
-  if (!props.page) {
+const Cafe: React.FC<Props> = ({ page, items }) => {
+  if (!page) {
     return <></>
   }
-  console.log(props)
 
   return (
-    <Layout title={props.page.fields.title}>
-      <CafePage {...props.page.fields} />
+    <Layout title={page.fields.title}>
+      <CafePage {...page.fields} />
+      {items.length > 0 && (
+        <Stack spacing={2}>
+          <Typography variant='h2'>おすすめ記事</Typography>
+          {items.map((item) => (
+            <EntryLinkCard key={item.sys.id} {...item} />
+          ))}
+        </Stack>
+      )}
     </Layout>
   )
 }

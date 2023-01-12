@@ -8,10 +8,10 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
+import { isPostEntry } from '../../@types/verify-types'
 import { Link } from '../Link'
 import ContentfulImage from './ContentfulImage'
-import EmbeddedAssetCard from './EmbeddedAssetCard'
-import { isPostEntry } from '../../@types/verify-types'
+import EntryLinkCard from './EntryLinkCard'
 
 const renderOption: Options = {
   renderNode: {
@@ -27,19 +27,10 @@ const renderOption: Options = {
         </Box>
       )
     },
-    [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
       const entry = node.data.target
       if (isPostEntry(entry)) {
-        const path = `/${entry.sys.contentType.sys.id}s/${entry.sys.id}`
-
-        return (
-          <EmbeddedAssetCard
-            href={path}
-            title={entry.fields.title}
-            description={entry.fields.description}
-            image={entry.fields.thumbnail.fields.file.url}
-          />
-        )
+        return <EntryLinkCard {...entry} />
       } else {
         console.warn(
           `Not support to embed this entry: ${entry.sys.contentType.sys.id}`
