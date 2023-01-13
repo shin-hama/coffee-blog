@@ -6,7 +6,7 @@ import { EntryCollection } from 'contentful'
 import { ICafeFields } from '../src/@types/contentful'
 import Layout from '../src/components/Layout'
 import { NavLink } from '../src/components/Link'
-import PageCard from '../src/components/PageCard'
+import PageCard from '../src/components/PageCardLink'
 import { getAllCafes } from '../src/lib/get-all-cafes'
 
 type Props = {
