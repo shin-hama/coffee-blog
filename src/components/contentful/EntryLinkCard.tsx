@@ -18,19 +18,22 @@ type Props = IPost
  */
 const EntryLinkCard: React.FC<Props> = ({ sys, fields }) => {
   const path = `/${sys.contentType.sys.id}s/${sys.id}`
+  console.log(fields)
 
   return (
     <NavLink href={path}>
       <Card>
-        <Stack
-          direction='row'
-          alignItems='start'
-          justifyContent='space-between'
-          height='140px'
-          sx={{ maxHeight: '140px' }}
-        >
-          <CardContent>
-            <Typography variant='h4' noWrap>
+        <Stack direction='row' height='140px' sx={{ maxHeight: '140px' }}>
+          <CardContent sx={{ flexGrow: 1, minWidth: 0 }}>
+            <Typography
+              variant='h4'
+              sx={{
+                display: '-webkit-box',
+                overflow: 'hidden',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 2
+              }}
+            >
               {fields.title}
             </Typography>
             <Typography
@@ -45,8 +48,12 @@ const EntryLinkCard: React.FC<Props> = ({ sys, fields }) => {
               {fields.description}
             </Typography>
           </CardContent>
-          <CardMedia sx={{ height: '100%' }}>
-            <Box position='relative' height='100%' sx={{ aspectRatio: '4/3' }}>
+          <CardMedia sx={{ display: 'block', height: '100%' }}>
+            <Box
+              position='relative'
+              height='100%'
+              sx={{ aspectRatio: { xs: '1/1', sm: '4/3' } }}
+            >
               <ContentfulImage
                 src={fields.thumbnail.fields.file.url}
                 alt=''

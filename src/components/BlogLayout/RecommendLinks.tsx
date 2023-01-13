@@ -11,7 +11,7 @@ type Props = {
 }
 const RecommendLinks: React.FC<Props> = ({ items }) => {
   return items.length > 0 ? (
-    <Stack spacing={2}>
+    <Stack spacing={1}>
       <Typography variant='h2'>おすすめ記事</Typography>
       {items.map((item) => (
         <EntryLinkCard key={item.sys.id} {...item} />
