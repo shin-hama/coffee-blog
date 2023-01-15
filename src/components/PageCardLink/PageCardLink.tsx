@@ -47,7 +47,7 @@ const PageCardLink: React.FC<Props> = ({
         </CardMedia>
         <CardContent>
           <Stack spacing={1}>
-            <Typography variant='h2'>{title}</Typography>
+            <Typography variant='h4'>{title}</Typography>
             {renderDetail(sys.contentType.sys.id)}
           </Stack>
         </CardContent>
