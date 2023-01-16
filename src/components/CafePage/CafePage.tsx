@@ -1,12 +1,12 @@
 import * as React from 'react'
 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeFields } from '../../@types/contentful'
+import RichTextRenderer from '../contentful/RichTextRenderer'
 import Gallery from './Gallery'
 import Information from './Information'
 import Order from './Order'
@@ -22,7 +22,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         <Gallery images={cafe.photos.map((photo) => photo.fields.file.url)} />
         <Box>
           <Typography variant='h2'>レビュー</Typography>
-          {documentToReactComponents(cafe.content)}
+          <RichTextRenderer doc={cafe.content} />
         </Box>
         <Typography variant='h2'>注文品</Typography>
         <Box>

@@ -5,7 +5,7 @@ import { IBlog, ICafe } from '../src/@types/contentful'
 import HomePage from '../src/components/HomePage'
 import Layout from '../src/components/Layout'
 import { getLatestCafes } from '../src/lib/get-cafes'
-import { getLatestPosts } from '../src/lib/get_posts'
+import { getLatestPosts } from '../src/lib/get-posts'
 
 type Props = {
   cafes: Array<ICafe>

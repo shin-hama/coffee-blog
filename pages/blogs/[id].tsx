@@ -40,7 +40,11 @@ const BlogPostPage: React.FC<Props> = ({ post, items }) => {
   }
 
   return (
-    <Layout title={post.fields.title} description={post.fields.description}>
+    <Layout
+      title={post.fields.title}
+      description={post.fields.description}
+      image={post.fields.thumbnail.fields.file.url}
+    >
       <BlogLayout post={post} recommendItems={items}>
         <BlogPost {...post.fields} />
       </BlogLayout>

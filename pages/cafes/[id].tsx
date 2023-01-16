@@ -49,6 +49,7 @@ const Cafe: React.FC<Props> = ({ page, items }) => {
     <Layout
       title={page.fields.title}
       description={page.fields.description || page.fields.title}
+      image={page.fields.thumbnail.fields.file.url}
     >
       <BlogLayout post={page} recommendItems={items}>
         <CafePage {...page.fields} />

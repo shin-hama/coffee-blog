@@ -246,6 +246,40 @@ export interface IPerson extends Entry<IPersonFields> {
   }
 }
 
+export interface IStaticPageFields {
+  /** Title */
+  title: string
+
+  /** Slug */
+  slug?: string | undefined
+
+  /** Thumbnail */
+  thumbnail: Asset
+
+  /** Content */
+  content: Document
+
+  /** Description */
+  description: string
+}
+
+export interface IStaticPage extends Entry<IStaticPageFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'staticPage'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
 export interface ITagFields {
   /** Title */
   title: string
@@ -289,6 +323,7 @@ export type CONTENT_TYPE =
   | 'cafeInformation'
   | 'cafeOrder'
   | 'person'
+  | 'staticPage'
   | 'tag'
 
 export type IEntry =
@@ -297,6 +332,7 @@ export type IEntry =
   | ICafeInformation
   | ICafeOrder
   | IPerson
+  | IStaticPage
   | ITag
 
 export type LOCALE_CODE = 'en-US'

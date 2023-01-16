@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import { IBlog } from '../../src/@types/contentful'
 import Posts from '../../src/components/HomePage/Posts'
 import Layout from '../../src/components/Layout'
-import { getAllBlogPosts } from '../../src/lib/get_posts'
+import { getAllBlogPosts } from '../../src/lib/get-posts'
 
 type Props = {
   posts: Array<IBlog>

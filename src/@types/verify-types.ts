@@ -1,4 +1,4 @@
-import type { IBlog, ICafe } from './contentful'
+import type { IBlog, ICafe, IStaticPage } from './contentful'
 
 export type IPost = IBlog | ICafe
 
@@ -24,5 +24,13 @@ export const isPostEntry = (target: any): target is IPost => {
     target !== undefined &&
     (target.sys?.contentType?.sys?.id === 'cafe' ||
       target.sys?.contentType?.sys?.id === 'blog')
+  )
+}
+
+export const isStaticPageEntry = (target: any): target is IStaticPage => {
+  return (
+    target !== null &&
+    target !== undefined &&
+    target.sys?.contentType?.sys?.id === 'staticPage'
   )
 }
