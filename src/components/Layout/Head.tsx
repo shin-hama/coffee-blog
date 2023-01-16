@@ -12,7 +12,7 @@ type Props = {
   image?: string
 }
 const Head: React.FC<Props> = ({
-  title = siteConfig.title,
+  title = siteConfig.siteName,
   description,
   image
 }) => {
