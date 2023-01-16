@@ -14,7 +14,6 @@ import { NavLink } from '../Link'
 
 const iconParser = (link: string) => {
   const host = new URL(link).hostname
-  console.log(host)
   if (host.includes('twitter')) {
     return faTwitter
   } else if (host.includes('instagram')) {

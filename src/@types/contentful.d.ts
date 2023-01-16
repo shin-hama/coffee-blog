@@ -2,9 +2,52 @@
 import { Document } from '@contentful/rich-text-types'
 import { Asset, Entry } from 'contentful'
 
+export interface IBlogFields {
+  /** Title */
+  title: string
+
+  /** slug */
+  slug: string
+
+  /** Thumbnail */
+  thumbnail: Asset
+
+  /** Description */
+  description: string
+
+  /** Content */
+  content: Document
+
+  /** Tags */
+  tags?: ITag[] | undefined
+
+  /** Created at */
+  createdAt: string
+
+  /** Updated at */
+  updatedAt?: string | undefined
+}
+
+export interface IBlog extends Entry<IBlogFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'blog'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
 export interface ICafeFields {
-  /** Name */
-  name: string
+  /** Title */
+  title: string
 
   /** Slug */
   slug: string
@@ -22,7 +65,10 @@ export interface ICafeFields {
   photos: Asset[]
 
   /** Description */
-  description: Document
+  description?: string | undefined
+
+  /** Content */
+  content: Document
 
   /** Links */
   links: string[]
@@ -36,8 +82,8 @@ export interface ICafeFields {
   /** Instagram */
   instagram?: string | undefined
 
-  /** Location */
-  location?: Document | undefined
+  /** Tags */
+  tags?: ITag[] | undefined
 }
 
 /** 紹介するカフェの情報 */
@@ -64,7 +110,17 @@ export interface ICafeInformationFields {
   name: string
 
   /** Holidays */
-  holidays: ('月' | '火' | '水' | '木' | '金' | '土' | '日')[]
+  holidays: (
+    | '月'
+    | '火'
+    | '水'
+    | '木'
+    | '金'
+    | '土'
+    | '日'
+    | 'なし'
+    | '不定休'
+  )[]
 
   /** Takeout */
   takeout: boolean
@@ -190,9 +246,58 @@ export interface IPerson extends Entry<IPersonFields> {
   }
 }
 
-export type CONTENT_TYPE = 'cafe' | 'cafeInformation' | 'cafeOrder' | 'person'
+export interface ITagFields {
+  /** Title */
+  title: string
 
-export type IEntry = ICafe | ICafeInformation | ICafeOrder | IPerson
+  /** slug */
+  slug: string
+
+  /** Thumbnail */
+  thumbnail?: Asset | undefined
+
+  /** Description */
+  description?: string | undefined
+
+  /** Content */
+  content?: Document | undefined
+
+  /** Recommends */
+  recommends?: (IBlog | ICafe)[] | undefined
+}
+
+export interface ITag extends Entry<ITagFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'tag'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
+export type CONTENT_TYPE =
+  | 'blog'
+  | 'cafe'
+  | 'cafeInformation'
+  | 'cafeOrder'
+  | 'person'
+  | 'tag'
+
+export type IEntry =
+  | IBlog
+  | ICafe
+  | ICafeInformation
+  | ICafeOrder
+  | IPerson
+  | ITag
 
 export type LOCALE_CODE = 'en-US'
 

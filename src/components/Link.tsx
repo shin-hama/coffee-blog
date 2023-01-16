@@ -3,7 +3,9 @@ import NextLink from 'next/link'
 
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
 
-type Props = MuiLinkProps
+type Props = MuiLinkProps & {
+  href: string
+}
 export const Link: React.FC<Props> = ({ href, children, ...props }) => {
   const isAbsoluteUrl = React.useMemo(() => {
     return href?.startsWith('http')

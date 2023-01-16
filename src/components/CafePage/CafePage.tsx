@@ -15,7 +15,6 @@ import Research from './Research'
 
 type Props = ICafeFields
 const CafePage: React.FC<Props> = (cafe) => {
-  console.log(cafe)
   return (
     <article>
       <Stack spacing={4}>
@@ -23,7 +22,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         <Gallery images={cafe.photos.map((photo) => photo.fields.file.url)} />
         <Box>
           <Typography variant='h2'>レビュー</Typography>
-          {documentToReactComponents(cafe.description)}
+          {documentToReactComponents(cafe.content)}
         </Box>
         <Typography variant='h2'>注文品</Typography>
         <Box>
@@ -35,7 +34,7 @@ const CafePage: React.FC<Props> = (cafe) => {
             ))}
           </Grid>
         </Box>
-        <Research name={cafe.name} />
+        <Research name={cafe.title} />
         <Typography variant='h2'>Cafe 情報</Typography>
         <Information information={cafe.information.fields} />
       </Stack>

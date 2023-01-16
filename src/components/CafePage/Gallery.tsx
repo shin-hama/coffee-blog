@@ -3,7 +3,7 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 
-import ContentfulImage from '../ContentfulImage'
+import ContentfulImage from '../contentful/ContentfulImage'
 
 type Props = {
   images: Array<string>

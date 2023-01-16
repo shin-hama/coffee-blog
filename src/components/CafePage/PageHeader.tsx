@@ -7,11 +7,11 @@ import Typography from '@mui/material/Typography'
 import { ICafeFields } from '../../@types/contentful'
 import Links from './Links'
 
-type Props = Pick<ICafeFields, 'city' | 'name' | 'links' | 'visited'>
-const PageHeader: React.FC<Props> = ({ name, city, links, visited }) => {
+type Props = Pick<ICafeFields, 'city' | 'title' | 'links' | 'visited'>
+const PageHeader: React.FC<Props> = ({ title, city, links, visited }) => {
   return (
     <Stack>
-      <Typography variant='h2'>{name}</Typography>
+      <Typography variant='h2'>{title}</Typography>
       <Stack spacing={1} alignItems='end'>
         <Stack width='100%' direction='row' justifyContent='start' spacing={2}>
           <Chip label={city} />

@@ -1,15 +1,16 @@
 import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { Entry } from 'contentful'
-
-import { ICafeFields } from '../../src/@types/contentful'
+import { ICafe } from '../../src/@types/contentful'
+import { IPost, isPostEntry } from '../../src/@types/verify-types'
+import BlogLayout from '../../src/components/BlogLayout'
 import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
-import { getCafeContent } from '../../src/lib/get-cafe-content'
+import { getCafeContent, getCafeRef } from '../../src/lib/get-cafe-content'
 
 type Props = {
-  page: Entry<ICafeFields>
+  page: ICafe
+  items: Array<IPost>
 }
 export const getStaticProps: GetStaticProps<Props> = async (props) => {
   const [id] = [props.params?.id].flat(1)
@@ -17,9 +18,12 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   if (id) {
     try {
       const page = await getCafeContent(id)
-      return { props: { page } }
+      const ref = await getCafeRef(id)
+      return {
+        props: { page, items: ref.items.filter(isPostEntry) }
+      }
     } catch (e) {
-      console.error('test')
+      console.error(e)
       throw e
     }
   } else {
@@ -34,14 +38,19 @@ export const getStaticPaths: GetStaticPaths = () => {
   }
 }
 
-const Cafe: React.FC<Props> = (props) => {
-  if (!props.page) {
+const Cafe: React.FC<Props> = ({ page, items }) => {
+  if (!page) {
     return <></>
   }
 
   return (
-    <Layout title={props.page.fields.name}>
-      <CafePage {...props.page.fields} />
+    <Layout
+      title={page.fields.title}
+      description={page.fields.description || page.fields.title}
+    >
+      <BlogLayout post={page} recommendItems={items}>
+        <CafePage {...page.fields} />
+      </BlogLayout>
     </Layout>
   )
 }

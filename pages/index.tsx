@@ -1,40 +1,32 @@
 import * as React from 'react'
 
-import Grid from '@mui/material/Grid'
-import { EntryCollection } from 'contentful'
-
-import { ICafeFields } from '../src/@types/contentful'
+import { siteConfig } from '../site.config'
+import { IBlog, ICafe } from '../src/@types/contentful'
+import HomePage from '../src/components/HomePage'
 import Layout from '../src/components/Layout'
-import { NavLink } from '../src/components/Link'
-import PageCard from '../src/components/PageCard'
-import { getAllCafes } from '../src/lib/get-all-cafes'
+import { getLatestCafes } from '../src/lib/get-cafes'
+import { getLatestPosts } from '../src/lib/get_posts'
 
 type Props = {
-  cafes: EntryCollection<ICafeFields>
+  cafes: Array<ICafe>
+  posts: Array<IBlog>
 }
 export const getStaticProps = async () => {
-  const cafes = await getAllCafes()
+  const cafes = await getLatestCafes()
+  const posts = await getLatestPosts()
 
-  return { props: { cafes: JSON.parse(JSON.stringify(cafes)) } }
+  return {
+    props: {
+      cafes,
+      posts
+    }
+  }
 }
-export default function Home({ cafes }: Props) {
-  const { items } = cafes
+
+export default function Home({ cafes, posts }: Props) {
   return (
-    <Layout title='tokyo cafe catalog'>
-      <Grid container spacing={4}>
-        {items.map((item) => (
-          <Grid key={item.sys.id} item xs={12} sm={6}>
-            <NavLink href={`cafes/${item.sys.id}`}>
-              <PageCard
-                name={item.fields.name}
-                city={item.fields.city}
-                visited={item.fields.visited}
-                img={item.fields.thumbnail.fields.file.url}
-              />
-            </NavLink>
-          </Grid>
-        ))}
-      </Grid>
+    <Layout title={siteConfig.siteName} description={siteConfig.description}>
+      <HomePage cafes={cafes} blogs={posts} />
     </Layout>
   )
 }
