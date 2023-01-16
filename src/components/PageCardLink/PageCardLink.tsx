@@ -32,7 +32,7 @@ const PageCardLink: React.FC<Props> = ({
   }
 
   return (
-    <NavLink href={`cafes/${sys.id}`}>
+    <NavLink href={`/${sys.contentType.sys.id}s/${sys.id}`}>
       <Card>
         <CardMedia sx={{ height: '250px' }}>
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
