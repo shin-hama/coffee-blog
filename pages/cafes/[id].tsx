@@ -44,7 +44,10 @@ const Cafe: React.FC<Props> = ({ page, items }) => {
   }
 
   return (
-    <Layout title={page.fields.title}>
+    <Layout
+      title={page.fields.title}
+      description={page.fields.description || page.fields.title}
+    >
       <BlogLayout post={page} recommendItems={items}>
         <CafePage {...page.fields} />
       </BlogLayout>

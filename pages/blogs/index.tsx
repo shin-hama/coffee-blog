@@ -20,7 +20,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const Blogs: React.FC<Props> = ({ posts }) => {
   return (
-    <Layout title='All posts'>
+    <Layout
+      title='All posts'
+      description='コーヒー好きが解説するコーヒー情報の一覧'
+    >
       <Stack spacing={4}>
         <Typography variant='h2'>All Blog Posts</Typography>
         <Box>
