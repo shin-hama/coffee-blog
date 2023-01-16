@@ -16,11 +16,3 @@ export const getCafeContent = async (id: string): Promise<ICafe> => {
     )
   }
 }
-
-export const getCafeRef = async (id: string) => {
-  const contentful = getClient()
-
-  return await contentful.getEntries({
-    links_to_entry: id
-  })
-}

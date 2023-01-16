@@ -2,11 +2,12 @@ import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { ICafe } from '../../src/@types/contentful'
-import { IPost, isPostEntry } from '../../src/@types/verify-types'
+import { IPost } from '../../src/@types/verify-types'
 import BlogLayout from '../../src/components/BlogLayout'
 import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
-import { getCafeContent, getCafeRef } from '../../src/lib/get-cafe-content'
+import { getCafeContent } from '../../src/lib/get-cafe-content'
+import { getLinkedPosts } from '../../src/lib/get-linked-posts'
 
 type Props = {
   page: ICafe
@@ -18,9 +19,10 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   if (id) {
     try {
       const page = await getCafeContent(id)
-      const ref = await getCafeRef(id)
+      const linkedItems = await getLinkedPosts(id)
+
       return {
-        props: { page, items: ref.items.filter(isPostEntry) }
+        props: { page, items: linkedItems }
       }
     } catch (e) {
       console.error(e)
