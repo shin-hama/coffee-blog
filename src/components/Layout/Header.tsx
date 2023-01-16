@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 
+import { siteConfig } from '../../../site.config'
 import { NavLink } from '../Link'
 
 const Header = () => {
@@ -13,11 +14,11 @@ const Header = () => {
 
   return (
     <Slide appear={false} direction='down' in={!trigger}>
-      <AppBar color='inherit'>
+      <AppBar color='inherit' sx={{ boxShadow: 'none' }}>
         <Toolbar sx={{ justifyContent: 'center' }}>
           <NavLink href={'/'}>
-            <Typography fontFamily={"'Dela Gothic One'"} variant='h5'>
-              コーヒージャンキー
+            <Typography fontFamily={"'Dela Gothic One'"} variant='h4'>
+              {siteConfig.siteName}
             </Typography>
           </NavLink>
         </Toolbar>

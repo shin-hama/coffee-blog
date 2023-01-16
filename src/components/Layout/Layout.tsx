@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Footer from './Footer'
 import Head from './Head'
 import Header from './Header'
+import Navbar from './Navbar'
 
 type Props = React.PropsWithChildren & {
   title: string
@@ -19,6 +20,7 @@ const Layout: React.FC<Props> = ({ children, title, description, image }) => {
       <Head title={title} description={description} image={image} />
       <Header />
       <Toolbar />
+      <Navbar />
       <Container maxWidth={false}>
         <main>
           <Box mx='auto' maxWidth='md' sx={{ py: 4 }}>
