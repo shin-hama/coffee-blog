@@ -13,14 +13,16 @@ const StaticPage: React.FC<Props> = ({ title, content, thumbnail }) => {
   return (
     <Stack spacing={2}>
       <Typography variant='h1'>{title}</Typography>
-      <Box position='relative' width='100%' sx={{ aspectRatio: '16/9' }}>
-        <ContentfulImage
-          src={thumbnail.fields.file.url}
-          alt=''
-          fill
-          style={{ objectFit: 'cover' }}
-        />
-      </Box>
+      {thumbnail && (
+        <Box position='relative' width='100%' sx={{ aspectRatio: '16/9' }}>
+          <ContentfulImage
+            src={thumbnail.fields.file.url}
+            alt=''
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </Box>
+      )}
       <RichTextRenderer doc={content} />
     </Stack>
   )

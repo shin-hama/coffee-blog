@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: ['/about'],
+    paths: ['/about', '/privacy-policy'],
     fallback: true
   }
 }
@@ -43,7 +43,7 @@ const Page: React.FC<Props> = ({ page }) => {
     <Layout
       title={page.fields.title}
       description={page.fields.description}
-      image={page.fields.thumbnail.fields.file.url}
+      image={page.fields.thumbnail?.fields.file.url}
     >
       <StaticPage {...page.fields} />
     </Layout>

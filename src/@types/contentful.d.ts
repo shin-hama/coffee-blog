@@ -254,7 +254,7 @@ export interface IStaticPageFields {
   slug?: string | undefined
 
   /** Thumbnail */
-  thumbnail: Asset
+  thumbnail?: Asset | undefined
 
   /** Content */
   content: Document
