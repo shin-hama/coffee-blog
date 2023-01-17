@@ -11,8 +11,10 @@ import RichTextRenderer from '../contentful/RichTextRenderer'
 type Props = IStaticPageFields
 const StaticPage: React.FC<Props> = ({ title, content, thumbnail }) => {
   return (
-    <Stack spacing={2}>
-      <Typography variant='h1'>{title}</Typography>
+    <Stack spacing={4}>
+      <Typography variant='h1' gutterBottom>
+        {title}
+      </Typography>
       {thumbnail && (
         <Box position='relative' width='100%' sx={{ aspectRatio: '16/9' }}>
           <ContentfulImage

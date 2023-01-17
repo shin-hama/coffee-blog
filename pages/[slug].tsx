@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { IStaticPage } from '../src/@types/contentful'
 import Layout from '../src/components/Layout'
 import StaticPage from '../src/components/StaticPage'
+import { getAllStaticPages } from '../src/lib/get-all-static-pages'
 import { getStaticPage } from '../src/lib/get-page'
 
 type Props = {
@@ -27,9 +28,10 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getAllStaticPages()
   return {
-    paths: ['/about', '/privacy-policy'],
+    paths: entries.map((entry) => `/${entry.fields.slug}`),
     fallback: true
   }
 }
