@@ -7,3 +7,8 @@ if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY) {
 }
 export const googleMapsEmbedApiKey =
   process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY
+
+if (!process.env.NEXT_PUBLIC_GA_ID) {
+  throw Error('GA ID is empty')
+}
+export const gtagId = process.env.NEXT_PUBLIC_GA_ID
