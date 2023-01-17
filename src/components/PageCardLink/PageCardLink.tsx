@@ -34,8 +34,10 @@ const PageCardLink: React.FC<Props> = ({
   return (
     <NavLink href={`/${sys.contentType.sys.id}s/${sys.id}`}>
       <Card>
-        <CardMedia sx={{ height: '250px' }}>
-          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+        <CardMedia>
+          <div
+            style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}
+          >
             <ContentfulImage
               src={thumbnail.fields.file.url}
               alt=''
