@@ -10,12 +10,16 @@ type Props = {
   currentPost: IPost
 }
 const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
+  const postType = currentPost.sys.contentType.sys.id
   return (
     <MuiBreadcrumbs
       sx={{ textDecoration: 'none', color: (theme) => theme.palette.grey[600] }}
     >
       <Link href='/' sx={{ color: 'inherit' }}>
         home
+      </Link>
+      <Link href={`/${postType}s`} sx={{ color: 'inherit' }}>
+        {postType}
       </Link>
       <Typography>{currentPost.fields.title}</Typography>
     </MuiBreadcrumbs>
