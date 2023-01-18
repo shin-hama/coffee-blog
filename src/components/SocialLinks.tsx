@@ -8,9 +8,8 @@ import {
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Stack from '@mui/material/Stack'
-import SvgIcon from '@mui/material/SvgIcon'
 
-import { NavLink } from '../Link'
+import { NavLink } from './Link'
 
 const iconParser = (link: string) => {
   const host = new URL(link).hostname
@@ -28,18 +27,16 @@ const iconParser = (link: string) => {
 type Props = {
   links: Array<string>
 }
-const Links: React.FC<Props> = ({ links }) => {
+const SocialLinks: React.FC<Props> = ({ links }) => {
   return (
     <Stack direction='row' spacing={1} alignItems='center'>
       {links.map((link) => (
         <NavLink key={link} href={link}>
-          <SvgIcon>
-            <FontAwesomeIcon icon={iconParser(link)} />
-          </SvgIcon>
+          <FontAwesomeIcon size='xl' icon={iconParser(link)} />
         </NavLink>
       ))}
     </Stack>
   )
 }
 
-export default Links
+export default SocialLinks

@@ -5,16 +5,20 @@ import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import Links from '../CafePage/Links'
+import { siteConfig } from '../../../site.config'
+import SocialLinks from '../SocialLinks'
 
 const Bio = () => {
   return (
     <Paper>
       <CardContent>
-        <Typography>Name</Typography>
-        <Stack direction='row'>
-          <Typography>follow me:</Typography>
-          <Links links={['https://www.instagram.com/tokyo_cafe_catalog/']} />
+        <Stack spacing={1}>
+          <Typography variant='h6'>{siteConfig.author}</Typography>
+          <Typography variant='body2'>{siteConfig.profile}</Typography>
+          <Stack direction='row' spacing={1} alignItems='center'>
+            <Typography>follow me:</Typography>
+            <SocialLinks links={siteConfig.socials} />
+          </Stack>
         </Stack>
       </CardContent>
     </Paper>

@@ -1,25 +1,18 @@
 import * as React from 'react'
 
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
-import SvgIcon from '@mui/material/SvgIcon'
 import Typography from '@mui/material/Typography'
 
+import { siteConfig } from '../../../site.config'
 import { NavLink } from '../Link'
+import SocialLinks from '../SocialLinks'
 
 const Footer = () => {
   return (
     <footer>
       <Stack spacing={1} alignItems='center'>
-        <Stack direction='row' spacing={2}>
-          <NavLink href='https://www.instagram.com/tokyo_cafe_catalog/'>
-            <SvgIcon>
-              <FontAwesomeIcon icon={faInstagram} />
-            </SvgIcon>
-          </NavLink>
-        </Stack>
+        <SocialLinks links={siteConfig.socials} />
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           justifyContent='space-between'

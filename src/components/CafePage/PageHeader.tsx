@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeFields } from '../../@types/contentful'
-import Links from './Links'
+import SocialLinks from '../SocialLinks'
 
 type Props = Pick<ICafeFields, 'city' | 'title' | 'links' | 'visited'>
 const PageHeader: React.FC<Props> = ({ title, city, links, visited }) => {
@@ -17,7 +17,7 @@ const PageHeader: React.FC<Props> = ({ title, city, links, visited }) => {
           <Chip label={city} />
           <Typography variant='subtitle1'>Visited at: {visited}</Typography>
         </Stack>
-        <Links links={links} />
+        <SocialLinks links={links} />
       </Stack>
     </Stack>
   )
