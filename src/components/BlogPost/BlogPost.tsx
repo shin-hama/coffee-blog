@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useRouter } from 'next/router'
 
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
@@ -7,11 +6,9 @@ import Stack from '@mui/material/Stack'
 import { IBlogFields } from '../../@types/contentful'
 import ContentfulImage from '../contentful/ContentfulImage'
 import RichTextRenderer from '../contentful/RichTextRenderer'
-import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 
 const BlogPost: React.FC<IBlogFields> = (post) => {
-  const router = useRouter()
   return (
     <Stack>
       <PageHeader
@@ -31,7 +28,6 @@ const BlogPost: React.FC<IBlogFields> = (post) => {
       <article>
         <RichTextRenderer doc={post.content} />
       </article>
-      <PageFooter title={post.title} url={router.pathname} />
     </Stack>
   )
 }
