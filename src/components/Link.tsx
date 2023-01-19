@@ -6,13 +6,17 @@ import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
 type Props = MuiLinkProps & {
   href: string
 }
-export const Link: React.FC<Props> = ({ href, children, ...props }) => {
+export const Link: React.FC<Props> = React.forwardRef(function Link(
+  { href, children, ...props },
+  ref
+) {
   const isAbsoluteUrl = React.useMemo(() => {
     return href?.startsWith('http')
   }, [href])
 
   return (
     <MuiLink
+      ref={ref}
       component={NextLink}
       href={href}
       {...props}
@@ -22,12 +26,15 @@ export const Link: React.FC<Props> = ({ href, children, ...props }) => {
       {children}
     </MuiLink>
   )
-}
+})
 
-export const NavLink: React.FC<Props> = (props) => {
+export const NavLink: React.FC<Props> = React.forwardRef(function NavLink(
+  props,
+  ref
+) {
   const style = {
     color: 'inherit',
     textDecoration: 'none'
   }
-  return <Link {...props} sx={style} />
-}
+  return <Link ref={ref} {...props} sx={style} />
+})

@@ -18,7 +18,6 @@ type Props = IPost
  */
 const EntryLinkCard: React.FC<Props> = ({ sys, fields }) => {
   const path = `/${sys.contentType.sys.id}s/${sys.id}`
-  console.log(fields)
 
   return (
     <NavLink href={path}>

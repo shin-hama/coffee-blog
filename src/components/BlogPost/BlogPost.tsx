@@ -10,7 +10,7 @@ import PageHeader from './PageHeader'
 
 const BlogPost: React.FC<IBlogFields> = (post) => {
   return (
-    <Stack>
+    <Stack spacing={3}>
       <PageHeader
         title={post.title}
         createdAt={post.createdAt}

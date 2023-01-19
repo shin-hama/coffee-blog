@@ -44,6 +44,9 @@ const renderOption: Options = {
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
+      if (node.content.length > 1) {
+        return children
+      }
       return <Typography paragraph>{children}</Typography>
     },
     [BLOCKS.HEADING_1]: (node, children) => {
@@ -77,7 +80,11 @@ const renderOption: Options = {
     },
     [INLINES.EMBEDDED_ENTRY]: (node) => {
       if (isCafeInformation(node.data.target)) {
-        return <Information {...node.data.target.fields} />
+        return (
+          <Box mb={2}>
+            <Information {...node.data.target.fields} />
+          </Box>
+        )
       } else {
         console.warn(
           `Not supported for ${node.nodeType} that content is ${node.data.target.sys.contentType.sys.id}`

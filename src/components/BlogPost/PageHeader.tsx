@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
@@ -19,7 +20,7 @@ const PageHeader: React.FC<Props> = ({ title, createdAt, updatedAt, tags }) => {
       </Stack>
       <Stack direction='row' spacing={1}>
         {tags?.map((tag) => (
-          <Typography key={tag}>{tag}</Typography>
+          <Chip key={tag} label={tag} />
         ))}
       </Stack>
     </Stack>
