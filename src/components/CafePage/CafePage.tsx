@@ -36,7 +36,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         </Box>
         <Research name={cafe.title} />
         <Typography variant='h2'>Cafe 情報</Typography>
-        <Information information={cafe.information.fields} />
+        <Information {...cafe.information.fields} />
       </Stack>
     </article>
   )

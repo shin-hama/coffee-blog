@@ -8,7 +8,8 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
-import { isPostEntry } from '../../@types/verify-types'
+import { isCafeInformation, isPostEntry } from '../../@types/verify-types'
+import Information from '../CafePage/Information'
 import { Link } from '../Link'
 import ContentfulImage from './ContentfulImage'
 import EntryLinkCard from './EntryLinkCard'
@@ -30,7 +31,11 @@ const renderOption: Options = {
     [BLOCKS.EMBEDDED_ENTRY]: (node) => {
       const entry = node.data.target
       if (isPostEntry(entry)) {
-        return <EntryLinkCard {...entry} />
+        return (
+          <Box mb={2}>
+            <EntryLinkCard {...entry} />
+          </Box>
+        )
       } else {
         console.warn(
           `Not support to embed this entry: ${entry.sys.contentType.sys.id}`
@@ -69,6 +74,16 @@ const renderOption: Options = {
       const path = `/${node.data.target.sys.contentType.sys.id}s/${node.data.target.sys.id}`
 
       return <Link href={path}>{children}</Link>
+    },
+    [INLINES.EMBEDDED_ENTRY]: (node) => {
+      if (isCafeInformation(node.data.target)) {
+        return <Information {...node.data.target.fields} />
+      } else {
+        console.warn(
+          `Not supported for ${node.nodeType} that content is ${node.data.target.sys.contentType.sys.id}`
+        )
+        return <></>
+      }
     }
   },
   renderText: undefined,

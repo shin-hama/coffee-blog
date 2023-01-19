@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import Stack from '@mui/material/Stack'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -55,14 +56,12 @@ const rows: Array<Row> = [
   { key: 'payment', label: '支払い方法' }
 ]
 
-type Props = {
-  information: ICafeInformationFields
-}
-const Information: React.FC<Props> = ({ information }) => {
+type Props = ICafeInformationFields
+const Information: React.FC<Props> = (information) => {
   const query = `q=${information.name}&key=${googleMapsEmbedApiKey}`
 
   return (
-    <>
+    <Stack spacing={2}>
       <TableContainer>
         <Table size='small'>
           <TableBody>
@@ -84,7 +83,7 @@ const Information: React.FC<Props> = ({ information }) => {
         src={`https://www.google.com/maps/embed/v1/place?${query}&zoom=14`}
         allowFullScreen
       ></iframe>
-    </>
+    </Stack>
   )
 }
 
