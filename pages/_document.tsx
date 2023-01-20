@@ -5,6 +5,11 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8908594530879602'
+          crossOrigin='anonymous'
+        ></script>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
           rel='preconnect'

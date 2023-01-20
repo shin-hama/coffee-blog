@@ -1,6 +1,6 @@
 export const siteConfig: SiteConfig = {
   siteName: 'コーヒージャンキー',
-  siteUrl: 'https://coffee-blog-henna.vercel.app/',
+  siteUrl: 'https://www.coffee-junkie.jp/',
   description: 'コーヒー好きによるコーヒー情報ブログ',
 
   author: 'こぷら@コーヒージャンキー',
