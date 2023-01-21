@@ -6,8 +6,9 @@ import { IPost } from '../../src/@types/verify-types'
 import BlogLayout from '../../src/components/BlogLayout'
 import BlogPost from '../../src/components/BlogPost'
 import Layout from '../../src/components/Layout'
-import { getBlogPost } from '../../src/lib/get-blog-post'
 import { getLinkedPosts } from '../../src/lib/get-linked-posts'
+import { getBlogPost } from '../../src/lib/get-page-by-slug'
+import { getAllBlogPosts } from '../../src/lib/get-posts'
 
 type Props = {
   post: IBlog
@@ -15,11 +16,11 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (props) => {
-  const [id] = [props.params?.id].flat(1)
+  const [slug] = [props.params?.slug].flat(1)
 
-  if (id) {
-    const post = await getBlogPost(id)
-    const linkedItems = await getLinkedPosts(id)
+  if (slug) {
+    const post = await getBlogPost(slug)
+    const linkedItems = await getLinkedPosts(slug)
 
     return { props: { post: post, items: linkedItems }, revalidate: 600 }
   } else {
@@ -27,9 +28,10 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getAllBlogPosts()
   return {
-    paths: [],
+    paths: posts.map((post) => post.fields.slug),
     fallback: true
   }
 }

@@ -6,20 +6,21 @@ import { IPost } from '../../src/@types/verify-types'
 import BlogLayout from '../../src/components/BlogLayout'
 import CafePage from '../../src/components/CafePage'
 import Layout from '../../src/components/Layout'
-import { getCafeContent } from '../../src/lib/get-cafe-content'
+import { getAllCafes } from '../../src/lib/get-cafes'
 import { getLinkedPosts } from '../../src/lib/get-linked-posts'
+import { getCafeLog } from '../../src/lib/get-page-by-slug'
 
 type Props = {
   page: ICafe
   items: Array<IPost>
 }
 export const getStaticProps: GetStaticProps<Props> = async (props) => {
-  const [id] = [props.params?.id].flat(1)
+  const [slug] = [props.params?.slug].flat(1)
 
-  if (id) {
+  if (slug) {
     try {
-      const page = await getCafeContent(id)
-      const linkedItems = await getLinkedPosts(id)
+      const page = await getCafeLog(slug)
+      const linkedItems = await getLinkedPosts(slug)
 
       return {
         props: { page, items: linkedItems }
@@ -33,9 +34,10 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const cafes = await getAllCafes()
   return {
-    paths: [],
+    paths: cafes.map((cafe) => cafe.fields.slug),
     fallback: true
   }
 }

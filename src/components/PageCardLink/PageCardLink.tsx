@@ -14,16 +14,15 @@ import BlogCardDetail from './BlogCardDetail'
 import CafeCardDetail from './CafeCardDetail'
 
 type Props = IPost
-const PageCardLink: React.FC<Props> = ({
-  fields: { title, thumbnail, ...rest },
-  sys
-}) => {
+const PageCardLink: React.FC<Props> = ({ fields, sys }) => {
+  const { title, thumbnail, slug } = fields
+
   const renderDetail = (id: IPost['sys']['id']) => {
     switch (id) {
       case 'blog':
-        return <BlogCardDetail {...(rest as IBlogFields)} />
+        return <BlogCardDetail {...(fields as IBlogFields)} />
       case 'cafe':
-        return <CafeCardDetail {...(rest as ICafeFields)} />
+        return <CafeCardDetail {...(fields as ICafeFields)} />
       default:
         console.error(`Not supported content`)
 
@@ -32,7 +31,7 @@ const PageCardLink: React.FC<Props> = ({
   }
 
   return (
-    <NavLink href={`/${sys.contentType.sys.id}s/${sys.id}`}>
+    <NavLink href={`/${sys.contentType.sys.id}s/${slug}`}>
       <Card>
         <CardMedia>
           <div
