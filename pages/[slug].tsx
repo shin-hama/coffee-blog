@@ -5,7 +5,7 @@ import { IStaticPage } from '../src/@types/contentful'
 import Layout from '../src/components/Layout'
 import StaticPage from '../src/components/StaticPage'
 import { getAllStaticPages } from '../src/lib/get-all-static-pages'
-import { getStaticPage } from '../src/lib/get-page'
+import { getStaticPage } from '../src/lib/get-page-by-slug'
 
 type Props = {
   page: IStaticPage

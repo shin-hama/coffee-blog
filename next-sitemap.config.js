@@ -4,7 +4,8 @@ module.exports = {
   siteUrl: 'https://www.coffee-junkie.jp',
   generateRobotsTxt: true,
   sitemapSize: 7000,
-  exclude: ['/server-sitemap.xml'], // <= exclude here
+  autoLastmod: false,
+  exclude: ['/server-sitemap.xml', '/cafes/*', '/blogs/*'], // <= exclude here
   robotsTxtOptions: {
     additionalSitemaps: [
       'https://example.com/server-sitemap.xml' // <==== Add here
