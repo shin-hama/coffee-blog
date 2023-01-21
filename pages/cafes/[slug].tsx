@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const cafes = await getAllCafes()
   return {
-    paths: cafes.map((cafe) => cafe.fields.slug),
+    paths: cafes.map((cafe) => `/cafes/${cafe.fields.slug}`),
     fallback: true
   }
 }

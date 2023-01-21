@@ -1,3 +1,5 @@
+export const isDev = process.env.NODE_ENV === 'development'
+
 export const contentfulSpaceId = process.env.CONTENTFUL_SPACE_ID
 export const contentfulAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN
 export const contentfulPreviewAccessToken =
