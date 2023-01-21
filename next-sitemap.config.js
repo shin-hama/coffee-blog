@@ -8,7 +8,7 @@ module.exports = {
   exclude: ['/server-sitemap.xml', '/cafes/*', '/blogs/*'], // <= exclude here
   robotsTxtOptions: {
     additionalSitemaps: [
-      'https://example.com/server-sitemap.xml' // <==== Add here
+      'https://www.coffee-junkie.jp/server-sitemap.xml' // <==== Add here
     ]
   }
   // ...other options
