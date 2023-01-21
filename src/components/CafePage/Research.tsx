@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
-import SvgIcon from '@mui/material/SvgIcon'
 import Typography from '@mui/material/Typography'
 
 import { NavLink } from '../Link'
@@ -20,9 +19,7 @@ const Research: React.FC<Props> = ({ name }) => {
       <Card sx={{ width: '100%' }}>
         <CardContent>
           <Stack direction='row' alignItems='center' spacing={1}>
-            <SvgIcon>
-              <FontAwesomeIcon icon={faInstagram} />
-            </SvgIcon>
+            <FontAwesomeIcon icon={faInstagram} size='2x' />
             <Stack>
               <Typography># {name}</Typography>
               <Typography>Instagram の検索結果を見る</Typography>

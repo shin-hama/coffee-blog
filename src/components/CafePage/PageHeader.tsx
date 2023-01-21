@@ -12,12 +12,14 @@ const PageHeader: React.FC<Props> = ({ title, city, links, visited }) => {
   return (
     <Stack>
       <Typography variant='h2'>{title}</Typography>
-      <Stack spacing={1} alignItems='end'>
-        <Stack width='100%' direction='row' justifyContent='start' spacing={2}>
+      <Stack spacing={1}>
+        <Stack direction='row' spacing={2}>
           <Chip label={city} />
           <Typography variant='subtitle1'>Visited at: {visited}</Typography>
         </Stack>
-        <SocialLinks links={links} />
+        <Stack alignItems='end'>
+          <SocialLinks links={links} />
+        </Stack>
       </Stack>
     </Stack>
   )

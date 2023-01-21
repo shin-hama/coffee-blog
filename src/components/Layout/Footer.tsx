@@ -31,7 +31,7 @@ const Footer = () => {
               お問い合わせ
             </NavLink>
           </Stack>
-          <Typography>Copyright 2022 - Tokyo Cafe Catalog</Typography>
+          <Typography>Copyright 2022 - コーヒージャンキー</Typography>
         </Stack>
       </Stack>
     </footer>
