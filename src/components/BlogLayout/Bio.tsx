@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 
 import { siteConfig } from '../../../site.config'
 import SocialLinks from '../SocialLinks'
+import BuyMeACoffee from './BuyMeACoffee'
 
 const Bio = () => {
   return (
@@ -18,6 +19,7 @@ const Bio = () => {
           <Stack direction='row' spacing={1} alignItems='center'>
             <Typography>follow me:</Typography>
             <SocialLinks links={siteConfig.socials} />
+            <BuyMeACoffee />
           </Stack>
         </Stack>
       </CardContent>
