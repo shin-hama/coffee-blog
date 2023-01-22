@@ -5,6 +5,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 
 import GoogleAnalytics from '../src/components/GoogleAnalytics'
 import theme from '../src/lib/theme'
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics />
+      <VercelAnalytics />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
