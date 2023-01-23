@@ -31,7 +31,7 @@ const renderOption: Options = {
       return (
         <ListItem>
           <Link to={anchor} activeClass='active' smooth={true} duration={500}>
-            <ListItemText>{children}</ListItemText>
+            <ListItemText sx={{ pl: 4 }}>{children}</ListItemText>
           </Link>
         </ListItem>
       )

@@ -6,6 +6,7 @@ import {
 } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { isCafeInformation, isPostEntry } from '../../@types/verify-types'
@@ -46,7 +47,10 @@ const renderOption: Options = {
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      if (node.content.length > 1) {
+      if (
+        node.content.length > 1 &&
+        node.content[1].nodeType !== INLINES.HYPERLINK
+      ) {
         return children
       }
       return <Typography paragraph>{children}</Typography>
@@ -108,10 +112,10 @@ type Props = {
 }
 const RichTextRenderer: React.FC<Props> = ({ doc }) => {
   return (
-    <>
+    <Stack spacing={4}>
       <TableOfContents doc={doc} />
-      {documentToReactComponents(doc, renderOption)}
-    </>
+      <Box>{documentToReactComponents(doc, renderOption)}</Box>
+    </Stack>
   )
 }
 
