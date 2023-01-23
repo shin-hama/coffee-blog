@@ -13,6 +13,8 @@ import Information from '../CafePage/Information'
 import { Link } from '../Link'
 import ContentfulImage from './ContentfulImage'
 import EntryLinkCard from './EntryLinkCard'
+import TableOfContents from './TableOfContents'
+import { createAnchor } from './create-head-anchor'
 
 const renderOption: Options = {
   renderNode: {
@@ -57,15 +59,19 @@ const renderOption: Options = {
       )
     },
     [BLOCKS.HEADING_2]: (node, children) => {
+      const anchor = createAnchor(node.content[0])
+
       return (
-        <Typography component='h2' variant='h2' gutterBottom>
+        <Typography id={anchor} component='h2' variant='h2' gutterBottom>
           {children}
         </Typography>
       )
     },
     [BLOCKS.HEADING_3]: (node, children) => {
+      const anchor = createAnchor(node.content[0])
+
       return (
-        <Typography component='h3' variant='h3' gutterBottom>
+        <Typography id={anchor} component='h3' variant='h3' gutterBottom>
           {children}
         </Typography>
       )
@@ -101,7 +107,12 @@ type Props = {
   doc: Document
 }
 const RichTextRenderer: React.FC<Props> = ({ doc }) => {
-  return <>{documentToReactComponents(doc, renderOption)}</>
+  return (
+    <>
+      <TableOfContents doc={doc} />
+      {documentToReactComponents(doc, renderOption)}
+    </>
+  )
 }
 
 export default RichTextRenderer
