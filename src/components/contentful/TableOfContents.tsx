@@ -6,6 +6,8 @@ import {
 } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
 import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -53,6 +55,11 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
     headingTypes.includes(item.nodeType)
   )
 
+  if (headings.length === 0) {
+    // Head 項目がなければ表示しない
+    return <></>
+  }
+
   // 見出しのnodeTypeをdocumentとして利用
   const document: Document = {
     data: {},
@@ -61,14 +68,14 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
   }
 
   return (
-    <Box component='nav' bgcolor={'lightgray'} borderRadius={2}>
-      <Box px={2} py={1}>
+    <Card>
+      <CardContent>
         <Typography variant='h4' component='h4'>
           目次
         </Typography>
         <List dense>{documentToReactComponents(document, renderOption)}</List>
-      </Box>
-    </Box>
+      </CardContent>
+    </Card>
   )
 }
 
