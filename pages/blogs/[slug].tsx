@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
 
   if (slug) {
     const post = await getBlogPost(slug)
-    const linkedItems = await getLinkedPosts(slug)
+    const linkedItems = await getLinkedPosts(post.sys.id)
 
     return { props: { post: post, items: linkedItems }, revalidate: 600 }
   } else {

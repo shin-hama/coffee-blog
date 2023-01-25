@@ -8,6 +8,7 @@ export const getLinkedPosts = async (id: string): Promise<Array<IPost>> => {
     links_to_entry: id,
     limit: 5
   })
+  console.log(linkedItems)
 
   return linkedItems.items.filter(isPostEntry)
 }

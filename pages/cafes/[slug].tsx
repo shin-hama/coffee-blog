@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
   if (slug) {
     try {
       const page = await getCafeLog(slug)
-      const linkedItems = await getLinkedPosts(slug)
+      const linkedItems = await getLinkedPosts(page.sys.id)
 
       return {
         props: { page, items: linkedItems }
