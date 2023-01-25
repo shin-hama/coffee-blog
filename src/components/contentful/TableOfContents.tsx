@@ -5,37 +5,49 @@ import {
   documentToReactComponents
 } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-scroll'
 
 import { createAnchor } from './create-head-anchor'
 
+type ItemProps = React.PropsWithChildren & {
+  anchor: string
+  depth?: number
+}
+const LinkToContent: React.FC<ItemProps> = ({
+  anchor,
+  depth = 0,
+  children
+}) => {
+  return (
+    <ListItem>
+      <ListItemButton component='label' disableRipple disableTouchRipple>
+        <Link to={anchor} activeClass='active' smooth={true} duration={500}>
+          <ListItemText sx={{ pl: 4 * depth }}>{children}</ListItemText>
+        </Link>
+      </ListItemButton>
+    </ListItem>
+  )
+}
+
 const renderOption: Options = {
   renderNode: {
     [BLOCKS.HEADING_2]: (node, children) => {
       const anchor = createAnchor(node.content[0])
-      return (
-        <ListItem>
-          <Link to={anchor} activeClass='active' smooth={true} duration={500}>
-            <ListItemText>{children}</ListItemText>
-          </Link>
-        </ListItem>
-      )
+      return <LinkToContent anchor={anchor}>{children}</LinkToContent>
     },
     [BLOCKS.HEADING_3]: (node, children) => {
       const anchor = createAnchor(node.content[0])
       return (
-        <ListItem>
-          <Link to={anchor} activeClass='active' smooth={true} duration={500}>
-            <ListItemText sx={{ pl: 4 }}>{children}</ListItemText>
-          </Link>
-        </ListItem>
+        <LinkToContent anchor={anchor} depth={1}>
+          {children}
+        </LinkToContent>
       )
     }
   },

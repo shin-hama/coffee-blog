@@ -17,6 +17,7 @@ const BuyMeACoffee = () => {
           alt='Buy Me A Coffee'
           width={21.7 * 6}
           height={6.0 * 6}
+          unoptimized
         />
       </Box>
     </a>
