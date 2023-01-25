@@ -197,6 +197,46 @@ export interface ICafeOrder extends Entry<ICafeOrderFields> {
   }
 }
 
+export interface ICoffeeBeansFields {
+  /** Name */
+  name: string
+
+  /** Description */
+  description: string
+
+  /** Bitterness */
+  bitterness: number
+
+  /** Sourness */
+  sourness: number
+
+  /** Sweetness */
+  sweetness: number
+
+  /** Body */
+  body: number
+
+  /** Fragrance */
+  fragrance: number
+}
+
+export interface ICoffeeBeans extends Entry<ICoffeeBeansFields> {
+  sys: {
+    id: string
+    type: string
+    createdAt: string
+    updatedAt: string
+    locale: string
+    contentType: {
+      sys: {
+        id: 'coffeeBeans'
+        linkType: 'ContentType'
+        type: 'Link'
+      }
+    }
+  }
+}
+
 export interface IPersonFields {
   /** Name */
   name: string
@@ -322,6 +362,7 @@ export type CONTENT_TYPE =
   | 'cafe'
   | 'cafeInformation'
   | 'cafeOrder'
+  | 'coffeeBeans'
   | 'person'
   | 'staticPage'
   | 'tag'
@@ -331,6 +372,7 @@ export type IEntry =
   | ICafe
   | ICafeInformation
   | ICafeOrder
+  | ICoffeeBeans
   | IPerson
   | IStaticPage
   | ITag
