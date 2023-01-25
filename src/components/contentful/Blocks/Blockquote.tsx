@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles'
 const BlockquoteBox = styled(Box)(
   ({ theme }) => `
   color: ${theme.palette.grey[600]};
-  borderLeft: 4px solid ${theme.palette.grey[400]};
+  border-left: 4px solid ${theme.palette.grey[400]};
 `
 )
 
