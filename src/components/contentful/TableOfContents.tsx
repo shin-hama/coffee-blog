@@ -14,6 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-scroll'
 
+import { getText } from './Blocks/get-text'
 import { createAnchor } from './create-head-anchor'
 
 type ItemProps = React.PropsWithChildren & {
@@ -39,11 +40,13 @@ const LinkToContent: React.FC<ItemProps> = ({
 const renderOption: Options = {
   renderNode: {
     [BLOCKS.HEADING_2]: (node, children) => {
-      const anchor = createAnchor(node.content[0])
+      const text = getText(node.content)
+      const anchor = text ? createAnchor(text) : ''
       return <LinkToContent anchor={anchor}>{children}</LinkToContent>
     },
     [BLOCKS.HEADING_3]: (node, children) => {
-      const anchor = createAnchor(node.content[0])
+      const text = getText(node.content)
+      const anchor = text ? createAnchor(text) : ''
       return (
         <LinkToContent anchor={anchor} depth={1}>
           {children}
