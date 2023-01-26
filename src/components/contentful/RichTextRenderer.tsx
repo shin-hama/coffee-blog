@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { isPostEntry } from '../../@types/verify-types'
+import { buildPostUrl } from '../../lib/build-post-url'
 import { Link } from '../Link'
 import { Blockquote } from './Blocks/Blockquote'
 import { Heading } from './Blocks/Heading'
@@ -69,9 +70,13 @@ const renderOption: Options = {
       return <Link href={node.data.uri}>{text}</Link>
     },
     [INLINES.ENTRY_HYPERLINK]: (node, children) => {
-      const path = `/${node.data.target.sys.contentType.sys.id}s/${node.data.target.sys.id}`
+      if (isPostEntry(node.data.target)) {
+        const path = buildPostUrl(node.data.target)
 
-      return <Link href={path}>{children}</Link>
+        return <Link href={path}>{children}</Link>
+      }
+
+      return children
     },
     [INLINES.EMBEDDED_ENTRY]: renderInlineEntry
   },

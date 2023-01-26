@@ -8,14 +8,16 @@ import Typography from '@mui/material/Typography'
 
 import { IBlogFields, ICafeFields } from '../../@types/contentful'
 import { IPost } from '../../@types/verify-types'
+import { buildPostUrl } from '../../lib/build-post-url'
 import { NavLink } from '../Link'
 import ContentfulImage from '../contentful/ContentfulImage'
 import BlogCardDetail from './BlogCardDetail'
 import CafeCardDetail from './CafeCardDetail'
 
 type Props = IPost
-const PageCardLink: React.FC<Props> = ({ fields, sys }) => {
-  const { title, thumbnail, slug } = fields
+const PageCardLink: React.FC<Props> = (props) => {
+  const { sys, fields } = props
+  const { title, thumbnail } = fields
 
   const renderDetail = (id: IPost['sys']['id']) => {
     switch (id) {
@@ -30,8 +32,10 @@ const PageCardLink: React.FC<Props> = ({ fields, sys }) => {
     }
   }
 
+  const url = buildPostUrl(props)
+
   return (
-    <NavLink href={`/${sys.contentType.sys.id}s/${slug}`}>
+    <NavLink href={url}>
       <Card>
         <CardMedia>
           <div
