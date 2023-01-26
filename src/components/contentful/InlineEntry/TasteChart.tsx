@@ -18,8 +18,8 @@ type Props = {
 }
 const TasteChart: React.FC<Props> = ({ data }) => {
   return (
-    <ResponsiveContainer width='100%' height={250}>
-      <RadarChart outerRadius={90} data={data}>
+    <ResponsiveContainer width='100%' height={240}>
+      <RadarChart cy={'60%'} outerRadius={90} data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey='subject' />
         <PolarRadiusAxis

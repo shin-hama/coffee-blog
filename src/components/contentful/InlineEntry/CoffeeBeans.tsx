@@ -35,23 +35,25 @@ const CoffeeBeans: React.FC<ICoffeeBeansFields> = ({
   }))
 
   return (
-    <Card sx={{ width: '100%', maxWidth: '800px' }}>
-      <CardContent>
-        <Grid container spacing={2}>
-          <Grid xs={12} sm={6}>
-            <Stack spacing={1}>
-              <Typography variant='h4'>{name || 'Coffee Beans'}</Typography>
-              <Typography variant='body1'>
-                {description || 'No description'}
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid xs={12} sm={6}>
+    <Grid container spacing={2}>
+      <Grid xs={12} sm={6}>
+        <Stack spacing={1}>
+          <Typography variant='body1'>
+            {description || 'No description'}
+          </Typography>
+        </Stack>
+      </Grid>
+      <Grid xs={12} sm={6}>
+        <Card sx={{ width: '100%', maxWidth: '800px' }}>
+          <CardContent>
+            <Typography variant='h4' textAlign='center'>
+              {name || 'Coffee Beans'}
+            </Typography>
             <TasteChart data={data} />
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   )
 }
 
