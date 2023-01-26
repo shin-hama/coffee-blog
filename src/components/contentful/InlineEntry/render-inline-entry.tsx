@@ -8,19 +8,19 @@ import CafeInformation from './CafeInformation'
 import CoffeeBeans from './CoffeeBeans'
 
 export const renderInlineEntry = (node: Block | Inline) => {
-  const renderer = () => {
-    const { target } = node.data
+  const renderer = (_node: Block | Inline) => {
+    const { target } = _node.data
     if (isCafeInformation(target)) {
       return <CafeInformation {...target.fields} />
     } else if (isCoffeeBeans(target)) {
       return <CoffeeBeans {...target.fields} />
     } else {
-      const msg = `Not supported for ${node.nodeType} that content is ${node.data.target.sys.contentType.sys.id}`
+      const msg = `Not supported for ${_node.nodeType} that content is ${_node.data.target.sys.contentType.sys.id}`
 
       console.warn(msg)
       return <>{msg}</>
     }
   }
 
-  return <Box mb={2}>{renderer()}</Box>
+  return <Box mb={2}>{renderer(node)}</Box>
 }
