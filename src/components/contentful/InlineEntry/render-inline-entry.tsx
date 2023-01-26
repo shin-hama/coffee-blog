@@ -15,7 +15,7 @@ export const renderInlineEntry = (node: Block | Inline) => {
     } else if (isCoffeeBeans(target)) {
       return <CoffeeBeans {...target.fields} />
     } else {
-      const msg = `Not supported for ${_node.nodeType} that content is ${_node.data.target.sys.contentType.sys.id}`
+      const msg = `Not supported for ${_node.nodeType} that content is ${_node.data.target.sys.id}`
 
       console.warn(msg)
       return <>{msg}</>
