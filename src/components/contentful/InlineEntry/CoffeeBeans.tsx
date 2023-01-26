@@ -1,11 +1,11 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Unstable_Grid2'
 
 import { ICoffeeBeansFields } from '../../../@types/contentful'
 
@@ -35,17 +35,21 @@ const CoffeeBeans: React.FC<ICoffeeBeansFields> = ({
   }))
 
   return (
-    <Card>
+    <Card sx={{ width: '100%', maxWidth: '800px' }}>
       <CardContent>
-        <Stack direction={{ xs: 'column', sm: 'row' }}>
-          <Box>
-            <Typography variant='h4'>{name || 'Coffee Beans'}</Typography>
-            <Typography variant='body1'>
-              {description || 'No description'}
-            </Typography>
-          </Box>
-          <TasteChart data={data} />
-        </Stack>
+        <Grid container spacing={2}>
+          <Grid xs={12} sm={6}>
+            <Stack spacing={1}>
+              <Typography variant='h4'>{name || 'Coffee Beans'}</Typography>
+              <Typography variant='body1'>
+                {description || 'No description'}
+              </Typography>
+            </Stack>
+          </Grid>
+          <Grid xs={12} sm={6}>
+            <TasteChart data={data} />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   )
