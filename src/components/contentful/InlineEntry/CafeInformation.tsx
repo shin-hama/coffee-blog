@@ -7,8 +7,8 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableRow from '@mui/material/TableRow'
 
-import { ICafeInformationFields } from '../../@types/contentful'
-import { googleMapsEmbedApiKey } from '../../lib/config'
+import { ICafeInformationFields } from '../../../@types/contentful'
+import { googleMapsEmbedApiKey } from '../../../lib/config'
 
 const Renderer = ({ value }: { value: unknown }) => {
   if (value === null) {
@@ -57,7 +57,7 @@ const rows: Array<Row> = [
 ]
 
 type Props = ICafeInformationFields
-const Information: React.FC<Props> = (information) => {
+const CafeInformation: React.FC<Props> = (information) => {
   const query = `q=${information.name}&key=${googleMapsEmbedApiKey}`
 
   return (
@@ -87,4 +87,4 @@ const Information: React.FC<Props> = (information) => {
   )
 }
 
-export default Information
+export default CafeInformation

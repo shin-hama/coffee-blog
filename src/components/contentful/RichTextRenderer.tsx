@@ -9,8 +9,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { isCafeInformation, isPostEntry } from '../../@types/verify-types'
-import Information from '../CafePage/Information'
+import { isPostEntry } from '../../@types/verify-types'
 import { Link } from '../Link'
 import { Blockquote } from './Blocks/Blockquote'
 import { Heading } from './Blocks/Heading'
@@ -18,6 +17,7 @@ import { Table, TableCell, TableHeadCell, TableRow } from './Blocks/Table'
 import { getText } from './Blocks/get-text'
 import ContentfulImage from './ContentfulImage'
 import EntryLinkCard from './EntryLinkCard'
+import { renderInlineEntry } from './InlineEntry/render-inline-entry'
 import TableOfContents from './TableOfContents'
 
 const renderOption: Options = {
@@ -73,20 +73,7 @@ const renderOption: Options = {
 
       return <Link href={path}>{children}</Link>
     },
-    [INLINES.EMBEDDED_ENTRY]: (node) => {
-      if (isCafeInformation(node.data.target)) {
-        return (
-          <Box mb={2}>
-            <Information {...node.data.target.fields} />
-          </Box>
-        )
-      } else {
-        console.warn(
-          `Not supported for ${node.nodeType} that content is ${node.data.target.sys.contentType.sys.id}`
-        )
-        return <></>
-      }
-    }
+    [INLINES.EMBEDDED_ENTRY]: renderInlineEntry
   },
   renderText: undefined,
   renderMark: undefined
