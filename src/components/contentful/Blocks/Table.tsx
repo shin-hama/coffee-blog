@@ -13,8 +13,8 @@ import { getText } from './get-text'
 
 export const Table: NodeRenderer = (node, children) => {
   return (
-    <TableContainer component={Paper}>
-      <MuiTable aria-label='simple table'>
+    <TableContainer component={Paper} sx={{ mb: 2 }}>
+      <MuiTable aria-label='table' sx={{ whiteSpace: 'nowrap' }}>
         <TableBody>{children}</TableBody>
       </MuiTable>
     </TableContainer>
@@ -43,6 +43,15 @@ export const TableHeadCell: NodeRenderer = (node) => {
 
 export const TableCell: NodeRenderer = (node) => {
   return (
-    <StyledTableCell variant='body'>{getText(node.content)}</StyledTableCell>
+    <StyledTableCell variant='body'>
+      {getText(node.content)
+        ?.split('\n')
+        .map((item) => (
+          <React.Fragment key={item}>
+            {item}
+            <br />
+          </React.Fragment>
+        ))}
+    </StyledTableCell>
   )
 }
