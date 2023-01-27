@@ -6,9 +6,9 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeFields } from '../../@types/contentful'
+import CafeInformation from '../contentful/InlineEntry/CafeInformation'
 import RichTextRenderer from '../contentful/RichTextRenderer'
 import Gallery from './Gallery'
-import Information from './Information'
 import Order from './Order'
 import PageHeader from './PageHeader'
 import Research from './Research'
@@ -36,7 +36,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         </Box>
         <Research name={cafe.title} />
         <Typography variant='h2'>Cafe 情報</Typography>
-        <Information {...cafe.information.fields} />
+        <CafeInformation {...cafe.information.fields} />
       </Stack>
     </article>
   )

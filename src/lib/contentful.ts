@@ -6,20 +6,15 @@ import {
 
 import {
   contentfulAccessToken,
+  contentfulApiHost,
   contentfulEnvironment,
-  contentfulPreviewAccessToken,
   contentfulSpaceId
 } from './config'
 
 export const getClient = (): ContentfulClientApi => {
-  let accessToken
-  let host = undefined
-  if (process.env.NODE_ENV === 'development') {
-    accessToken = contentfulPreviewAccessToken
-    host = 'preview.contentful.com'
-  } else {
-    accessToken = contentfulAccessToken
-  }
+  const accessToken = contentfulAccessToken
+  const host = contentfulApiHost
+
   if (!contentfulSpaceId || !accessToken) {
     throw Error('CONTENTFUL api keys are empty')
   }

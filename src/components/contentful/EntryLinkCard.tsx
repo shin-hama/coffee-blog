@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { IPost } from '../../@types/verify-types'
+import { buildPostUrl } from '../../lib/build-post-url'
 import { NavLink } from '../Link'
 import ContentfulImage from './ContentfulImage'
 
@@ -16,8 +17,9 @@ type Props = IPost
  * Contentful の Embedded Asset によるリンクをカード形式で表示するためのコンポーネント
  * @returns
  */
-const EntryLinkCard: React.FC<Props> = ({ sys, fields }) => {
-  const path = `/${sys.contentType.sys.id}s/${fields.slug}`
+const EntryLinkCard: React.FC<Props> = (props) => {
+  const { fields } = props
+  const path = buildPostUrl(props)
 
   return (
     <NavLink href={path}>
@@ -51,7 +53,7 @@ const EntryLinkCard: React.FC<Props> = ({ sys, fields }) => {
             <Box
               position='relative'
               height='100%'
-              sx={{ aspectRatio: { xs: '1/1', sm: '4/3' } }}
+              sx={{ aspectRatio: { xs: '1/1', sm: '16/9' } }}
             >
               <ContentfulImage
                 src={fields.thumbnail.fields.file.url}

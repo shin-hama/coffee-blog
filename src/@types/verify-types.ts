@@ -1,4 +1,10 @@
-import type { IBlog, ICafe, ICafeInformation, IStaticPage } from './contentful'
+import type {
+  IBlog,
+  ICafe,
+  ICafeInformation,
+  ICoffeeBeans,
+  IStaticPage
+} from './contentful'
 
 export type IPost = IBlog | ICafe
 
@@ -40,5 +46,13 @@ export const isCafeInformation = (target: any): target is ICafeInformation => {
     target !== null &&
     target !== undefined &&
     target.sys?.contentType?.sys?.id === 'cafeInformation'
+  )
+}
+
+export const isCoffeeBeans = (target: any): target is ICoffeeBeans => {
+  return (
+    target !== null &&
+    target !== undefined &&
+    target.sys?.contentType?.sys?.id === 'coffeeBeans'
   )
 }
