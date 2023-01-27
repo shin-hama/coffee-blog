@@ -5,12 +5,13 @@ import {
   documentToReactComponents
 } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, Document } from '@contentful/rich-text-types'
+import { faCircle, faCircleDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-scroll'
 
@@ -26,14 +27,21 @@ const LinkToContent: React.FC<ItemProps> = ({
   depth = 0,
   children
 }) => {
+  const icon = depth === 0 ? faCircle : faCircleDot
   return (
-    <ListItem>
-      <ListItemButton component='label' disableRipple disableTouchRipple>
-        <Link to={anchor} activeClass='active' smooth={true} duration={500}>
-          <ListItemText sx={{ pl: 4 * depth }}>{children}</ListItemText>
-        </Link>
-      </ListItemButton>
-    </ListItem>
+    <ListItemButton
+      component='label'
+      disableRipple
+      disableTouchRipple
+      sx={{ pl: 4 * depth + 1 }}
+    >
+      <Link to={anchor} activeClass='active' smooth={true} duration={500}>
+        <Stack direction='row' spacing={1} alignItems='baseline'>
+          <FontAwesomeIcon size='2xs' icon={icon} color='#9D331F' />
+          <Typography variant='subtitle2'>{children}</Typography>
+        </Stack>
+      </Link>
+    </ListItemButton>
   )
 }
 
