@@ -12,14 +12,25 @@ type Props = {
 const Gallery: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = React.useState(0)
   const handler = useSwipeable({
-    onSwipedLeft: (event) => {
-      console.log('swipe left')
-      console.log(event)
+    onSwipedLeft: () => {
+      setIndex((prev) => {
+        if (prev < images.length - 1) {
+          return prev + 1
+        } else {
+          return prev
+        }
+      })
     },
-    onSwipedRight: (event) => {
-      console.log('swipe right')
-      console.log(event)
-    }
+    onSwipedRight: () => {
+      setIndex((prev) => {
+        if (prev > 0) {
+          return prev - 1
+        } else {
+          return prev
+        }
+      })
+    },
+    trackMouse: true
   })
 
   return (
@@ -30,6 +41,7 @@ const Gallery: React.FC<Props> = ({ images }) => {
           color='white'
           height='80%'
           bgcolor={(theme) => theme.palette.text.primary}
+          onDragStart={(event) => event.preventDefault()}
           {...handler}
         >
           <ContentfulImage
