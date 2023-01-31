@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
+import { useSwipeable } from 'react-swipeable'
 
 import ContentfulImage from '../contentful/ContentfulImage'
 
@@ -10,6 +11,16 @@ type Props = {
 }
 const Gallery: React.FC<Props> = ({ images }) => {
   const [index, setIndex] = React.useState(0)
+  const handler = useSwipeable({
+    onSwipedLeft: (event) => {
+      console.log('swipe left')
+      console.log(event)
+    },
+    onSwipedRight: (event) => {
+      console.log('swipe right')
+      console.log(event)
+    }
+  })
 
   return (
     <Box width='100%' maxHeight='400px' sx={{ aspectRatio: '1/1' }}>
@@ -19,6 +30,7 @@ const Gallery: React.FC<Props> = ({ images }) => {
           color='white'
           height='80%'
           bgcolor={(theme) => theme.palette.text.primary}
+          {...handler}
         >
           <ContentfulImage
             src={images[index]}
