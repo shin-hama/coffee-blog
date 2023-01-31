@@ -10,7 +10,7 @@ export const getAllBlogPosts = async (
 
   const posts = await contentful.getEntries<IBlogFields>({
     content_type: 'blog',
-    order: 'fields.createdAt',
+    order: '-fields.createdAt',
     ...query
   })
 

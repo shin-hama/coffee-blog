@@ -10,7 +10,7 @@ export const getAllCafes = async (
 
   const cafes = await contentful.getEntries<ICafeFields>({
     content_type: 'cafe',
-    order: 'fields.visited',
+    order: '-fields.visited',
     ...query
   })
 
