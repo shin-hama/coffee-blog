@@ -20,6 +20,22 @@ const CafePage: React.FC<Props> = (cafe) => {
       <Stack spacing={4}>
         <PageHeader {...cafe} />
         <Gallery images={cafe.photos.map((photo) => photo.fields.file.url)} />
+        {cafe.recommends && (
+          <Box>
+            <Typography component='h2' variant='h2'>
+              おすすめポイント
+            </Typography>
+            <ul>
+              {cafe.recommends.map((line) => (
+                <li key={line}>
+                  <Typography variant='h6' gutterBottom>
+                    {line}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
+          </Box>
+        )}
         <Box>
           <Typography variant='h2'>レビュー</Typography>
           <RichTextRenderer doc={cafe.content} />
@@ -34,7 +50,7 @@ const CafePage: React.FC<Props> = (cafe) => {
             ))}
           </Grid>
         </Box>
-        <Research name={cafe.title} />
+        {cafe.instagram && <Research name={cafe.instagram} />}
         <Typography variant='h2'>Cafe 情報</Typography>
         <CafeInformation {...cafe.information.fields} />
       </Stack>
