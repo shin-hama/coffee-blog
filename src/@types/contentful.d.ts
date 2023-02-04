@@ -67,6 +67,9 @@ export interface ICafeFields {
   /** Description */
   description?: string | undefined
 
+  /** Recommends */
+  recommends?: string[] | undefined
+
   /** Content */
   content: Document
 
