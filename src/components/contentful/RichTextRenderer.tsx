@@ -91,7 +91,9 @@ const RichTextRenderer: React.FC<Props> = ({ doc }) => {
   return (
     <Stack spacing={4}>
       <TableOfContents doc={doc} />
-      <Box>{documentToReactComponents(doc, renderOption)}</Box>
+      <Box sx={{ overflow: 'hidden' }}>
+        {documentToReactComponents(doc, renderOption)}
+      </Box>
     </Stack>
   )
 }

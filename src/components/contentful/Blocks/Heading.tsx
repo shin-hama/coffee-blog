@@ -10,12 +10,35 @@ import { getText } from './get-text'
 
 const StyledHeader = styled(Typography)(
   ({ theme }) => `
+  margin-top: ${theme.spacing(4)};
+  margin-bottom: ${theme.spacing(4)};
+
   &.h2 {
-    color: ${theme.palette.grey[600]};
+    color: ${theme.palette.grey[700]};
     padding-top: ${theme.spacing(1)};
     padding-bottom: ${theme.spacing(1)};
-    border-top: solid ${theme.palette.grey[600]} 4px;
-    border-bottom: solid ${theme.palette.grey[600]} 4px;
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+  }
+
+  &.h3 {
+    padding-bottom: ${theme.spacing(1)};
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: solid 2px #9D331F;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: solid 2px ${theme.palette.grey[400]};
+    }
   }
 `
 )
