@@ -3,9 +3,45 @@ import * as React from 'react'
 import { NodeRenderer } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
 
 import { createAnchor } from '../create-head-anchor'
 import { getText } from './get-text'
+
+const StyledHeader = styled(Typography)(
+  ({ theme }) => `
+  margin-top: ${theme.spacing(4)};
+  margin-bottom: ${theme.spacing(4)};
+
+  &.h2 {
+    color: ${theme.palette.grey[700]};
+    padding-top: ${theme.spacing(1)};
+    padding-bottom: ${theme.spacing(1)};
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+  }
+
+  &.h3 {
+    padding-bottom: ${theme.spacing(1)};
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: solid 2px #9D331F;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-bottom: solid 2px ${theme.palette.grey[400]};
+    }
+  }
+`
+)
 
 export const Heading: NodeRenderer = (node, children) => {
   const text = getText(node.content)
@@ -32,8 +68,8 @@ export const Heading: NodeRenderer = (node, children) => {
   }, [node.nodeType])
 
   return (
-    <Typography id={anchor} component={head} variant={head} gutterBottom>
+    <StyledHeader id={anchor} variant={head} gutterBottom className={head}>
       {children}
-    </Typography>
+    </StyledHeader>
   )
 }
