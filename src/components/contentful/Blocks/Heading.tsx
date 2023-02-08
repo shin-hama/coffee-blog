@@ -3,9 +3,22 @@ import * as React from 'react'
 import { NodeRenderer } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
 
 import { createAnchor } from '../create-head-anchor'
 import { getText } from './get-text'
+
+const StyledHeader = styled(Typography)(
+  ({ theme }) => `
+  &.h2 {
+    color: ${theme.palette.grey[600]};
+    padding-top: ${theme.spacing(1)};
+    padding-bottom: ${theme.spacing(1)};
+    border-top: solid ${theme.palette.grey[600]} 4px;
+    border-bottom: solid ${theme.palette.grey[600]} 4px;
+  }
+`
+)
 
 export const Heading: NodeRenderer = (node, children) => {
   const text = getText(node.content)
@@ -32,8 +45,8 @@ export const Heading: NodeRenderer = (node, children) => {
   }, [node.nodeType])
 
   return (
-    <Typography id={anchor} component={head} variant={head} gutterBottom>
+    <StyledHeader id={anchor} variant={head} gutterBottom className={head}>
       {children}
-    </Typography>
+    </StyledHeader>
   )
 }
