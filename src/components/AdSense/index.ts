@@ -1,1 +1,1 @@
-export { default as AdSense } from './AdSense'
+export { default } from './AdSense'

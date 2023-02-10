@@ -6,6 +6,7 @@ import path from 'path'
 
 import { siteConfig } from '../../../site.config'
 import { IPost } from '../../@types/verify-types'
+import AdSense from '../AdSense'
 import Bio from './Bio'
 import Breadcrumbs from './Breadcrumbs'
 import RecommendLinks from './RecommendLinks'
@@ -28,7 +29,9 @@ const BlogLayout: React.FC<Props> = ({ post, recommendItems, children }) => {
       {children}
       <Bio />
       <ShareButtons msg={post.fields.title} url={url} />
+      <AdSense unitType='multiplex' />
       <RecommendLinks items={recommendItems} />
+      <AdSense />
     </Stack>
   )
 }

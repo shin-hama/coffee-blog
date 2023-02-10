@@ -1,4 +1,5 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -6,6 +7,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeFields } from '../../@types/contentful'
+import AdSense from '../AdSense'
 import CafeInformation from '../contentful/InlineEntry/CafeInformation'
 import RichTextRenderer from '../contentful/RichTextRenderer'
 import Gallery from './Gallery'
@@ -36,10 +38,9 @@ const CafePage: React.FC<Props> = (cafe) => {
             </ul>
           </Box>
         )}
-        <Box>
-          <Typography variant='h2'>レビュー</Typography>
-          <RichTextRenderer doc={cafe.content} />
-        </Box>
+        <AdSense unitType='infeed' />
+        <Typography variant='h2'>レビュー</Typography>
+        <RichTextRenderer doc={cafe.content} />
         <Typography variant='h2'>注文品</Typography>
         <Box>
           <Grid container spacing={2}>

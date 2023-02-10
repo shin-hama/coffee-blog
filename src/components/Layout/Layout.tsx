@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
+import Stack from '@mui/material/Stack'
 import Toolbar from '@mui/material/Toolbar'
 
 import Footer from './Footer'
@@ -22,12 +23,14 @@ const Layout: React.FC<Props> = ({ children, title, description, image }) => {
       <Toolbar />
       <Navbar />
       <Container maxWidth={false}>
-        <main>
-          <Box mx='auto' maxWidth='md' sx={{ py: 4 }}>
-            {children}
-          </Box>
-        </main>
-        <Footer />
+        <Stack spacing={4}>
+          <main>
+            <Box mx='auto' maxWidth='md'>
+              {children}
+            </Box>
+          </main>
+          <Footer />
+        </Stack>
       </Container>
     </>
   )
