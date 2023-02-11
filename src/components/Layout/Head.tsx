@@ -32,14 +32,15 @@ const Head: React.FC<Props> = ({
       <meta name='description' content={description} />
       <meta name='og:description' content={description} />
       <meta name='twitter:description' content={description} />
-      <link rel='canonical' href={url} />
       <meta property='og:url' content={url} />
       <meta property='og:site_name' content={siteConfig.siteName} />
       <meta property='og:type' content='website' />
       <meta property='og:image' content={ogpImage} />
       <meta property='twitter:image' content={ogpImage} />
       <meta property='twitter:card' content='summary_large_image' />
+      <meta property='fb:app_id' content='740109527714777' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <link rel='canonical' href={url} />
       <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
     </NextHead>
   )
