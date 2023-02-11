@@ -2,8 +2,6 @@ import * as React from 'react'
 import NextHead from 'next/head'
 import { useRouter } from 'next/router'
 
-import path from 'path'
-
 import { siteConfig } from '../../../site.config'
 
 type Props = {
@@ -18,10 +16,12 @@ const Head: React.FC<Props> = ({
 }) => {
   const router = useRouter()
   const url = React.useMemo(() => {
-    const pathname = router.pathname
+    return new URL(router.asPath, siteConfig.siteUrl).href
+  }, [router.asPath])
 
-    return path.join(siteConfig.siteUrl, pathname)
-  }, [router.pathname])
+  const ogpImage = React.useMemo(() => {
+    return image ?? new URL('/images/default_ogp.png', siteConfig.siteUrl).href
+  }, [image])
 
   return (
     <NextHead>
@@ -36,17 +36,11 @@ const Head: React.FC<Props> = ({
       <meta property='og:url' content={url} />
       <meta property='og:site_name' content={siteConfig.siteName} />
       <meta property='og:type' content='website' />
-      {image ? (
-        <>
-          <meta property='og:image' content={image} />
-          <meta property='twitter:image' content={image} />
-          <meta property='twitter:card' content='summary_large_image' />
-        </>
-      ) : (
-        <meta property='twitter:card' content='summary' />
-      )}
+      <meta property='og:image' content={ogpImage} />
+      <meta property='twitter:image' content={ogpImage} />
+      <meta property='twitter:card' content='summary_large_image' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <link rel='icon' href='/favicon.svg' type="image/svg+xml" />
+      <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
     </NextHead>
   )
 }

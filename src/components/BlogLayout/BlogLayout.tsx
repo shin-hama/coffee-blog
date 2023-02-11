@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 
 import Stack from '@mui/material/Stack'
-import path from 'path'
 
 import { siteConfig } from '../../../site.config'
 import { IPost } from '../../@types/verify-types'
@@ -20,8 +19,9 @@ type Props = {
 const BlogLayout: React.FC<Props> = ({ post, recommendItems, children }) => {
   const router = useRouter()
   const url = React.useMemo(() => {
-    return path.join(siteConfig.siteUrl, router.asPath)
+    return new URL(router.asPath, siteConfig.siteUrl).href
   }, [router.asPath])
+  console.log(router)
 
   return (
     <Stack spacing={4}>
