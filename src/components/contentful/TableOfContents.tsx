@@ -7,8 +7,10 @@ import {
 import { BLOCKS, Document } from '@contentful/rich-text-types'
 import { faCircle, faCircleDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
+import Collapse from '@mui/material/Collapse'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import Stack from '@mui/material/Stack'
@@ -70,6 +72,7 @@ type Props = {
   doc: Document
 }
 const TableOfContents: React.FC<Props> = ({ doc }) => {
+  const [open, setOpen] = React.useState(false)
   // Contentfulの見出しを定義
   const headingTypes = [BLOCKS.HEADING_2, BLOCKS.HEADING_3]
 
@@ -92,11 +95,15 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
 
   return (
     <Card>
-      <CardContent>
+      <Button onClick={() => setOpen(true)}>
         <Typography variant='h4' component='h4'>
           目次
         </Typography>
-        <List dense>{documentToReactComponents(document, renderOption)}</List>
+      </Button>
+      <CardContent>
+        <Collapse in={open}>
+          <List dense>{documentToReactComponents(document, renderOption)}</List>
+        </Collapse>
       </CardContent>
     </Card>
   )
