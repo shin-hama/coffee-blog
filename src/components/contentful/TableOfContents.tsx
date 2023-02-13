@@ -95,12 +95,12 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
 
   return (
     <Card>
-      <Button onClick={() => setOpen(true)}>
-        <Typography variant='h4' component='h4'>
-          目次
-        </Typography>
-      </Button>
       <CardContent>
+        <Button onClick={() => setOpen((prev) => !prev)} fullWidth>
+          <Typography variant='h4' component='h4'>
+            目次
+          </Typography>
+        </Button>
         <Collapse in={open}>
           <List dense>{documentToReactComponents(document, renderOption)}</List>
         </Collapse>
