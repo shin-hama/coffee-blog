@@ -93,7 +93,7 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant='h4' component='h4'>
+        <Typography variant='h4' component='h4' textAlign='center'>
           目次
         </Typography>
         <List dense>{documentToReactComponents(document, renderOption)}</List>
