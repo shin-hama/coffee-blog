@@ -21,7 +21,6 @@ const BlogLayout: React.FC<Props> = ({ post, recommendItems, children }) => {
   const url = React.useMemo(() => {
     return new URL(router.asPath, siteConfig.siteUrl).href
   }, [router.asPath])
-  console.log(router)
 
   return (
     <Stack spacing={4}>
