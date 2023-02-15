@@ -37,7 +37,7 @@ const CafePage: React.FC<Props> = (cafe) => {
             </ul>
           </Box>
         )}
-        <AdSense unitType='infeed' />
+        <AdSense unitType='article' />
         <Typography variant='h2'>レビュー</Typography>
         <RichTextRenderer doc={cafe.content} />
         <Typography variant='h2'>注文品</Typography>

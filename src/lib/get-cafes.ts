@@ -17,6 +17,6 @@ export const getAllCafes = async (
   return cafes.items.filter(isCafeContent)
 }
 
-export const getLatestCafes = async () => {
-  return await getAllCafes({ limit: 4 })
+export const getLatestCafes = async (limit = 5) => {
+  return await getAllCafes({ limit })
 }

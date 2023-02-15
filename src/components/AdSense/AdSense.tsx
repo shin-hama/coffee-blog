@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 
-type UnitType = 'display' | 'infeed' | 'multiplex'
+type UnitType = 'article' | 'display' | 'infeed' | 'multiplex'
 
-const InfeedUnit = () => {
+const InArticleUnit = () => {
   return (
     <ins
       className='adsbygoogle'
@@ -12,6 +12,19 @@ const InfeedUnit = () => {
       data-ad-format='fluid'
       data-ad-client='ca-pub-8908594530879602'
       data-ad-slot='6307548930'
+    ></ins>
+  )
+}
+
+const InfeedUnit = () => {
+  return (
+    <ins
+      className='adsbygoogle'
+      style={{ display: 'block', textAlign: 'center' }}
+      data-ad-format='fluid'
+      data-ad-layout-key='-68+cj+7-4d+fo'
+      data-ad-client='ca-pub-8908594530879602'
+      data-ad-slot='6776498398'
     ></ins>
   )
 }
@@ -58,6 +71,8 @@ const AdSense: React.FC<Props> = ({ unitType = 'display' }) => {
 
   const renderer = (_unit: UnitType) => {
     switch (_unit) {
+      case 'article':
+        return <InArticleUnit />
       case 'display':
         return <DisplayUnit />
 
