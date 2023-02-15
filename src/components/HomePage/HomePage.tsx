@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { IBlog, ICafe } from '../../@types/contentful'
+import AdSense from '../AdSense'
 import { NavLink } from '../Link'
 import Posts from './Posts'
 
@@ -30,6 +31,7 @@ const HomePage: React.FC<Props> = ({ blogs, cafes }) => {
           See More
         </Button>
       </Box>
+      <AdSense unitType='display' />
       <Typography variant='h2'>Cafe Log</Typography>
       <Box>
         <Posts items={cafes} />
@@ -44,6 +46,7 @@ const HomePage: React.FC<Props> = ({ blogs, cafes }) => {
           See More
         </Button>
       </Box>
+      <AdSense unitType='display' />
     </Stack>
   )
 }

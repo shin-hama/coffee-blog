@@ -17,6 +17,6 @@ export const getAllBlogPosts = async (
   return posts.items.filter(isBlogContent)
 }
 
-export const getLatestPosts = async () => {
-  return getAllBlogPosts({ limit: 4 })
+export const getLatestPosts = async (limit = 5) => {
+  return getAllBlogPosts({ limit })
 }
