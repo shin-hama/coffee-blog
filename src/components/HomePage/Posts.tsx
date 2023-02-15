@@ -19,7 +19,7 @@ const Posts: React.FC<Props> = ({ items }) => {
           </Grid>
           {i === Math.ceil(items.length / 2) - 1 && (
             <Grid item xs={12} sm={6}>
-              <AdSense unitType='display' />
+              <AdSense unitType='infeed' />
             </Grid>
           )}
         </React.Fragment>
