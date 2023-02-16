@@ -18,15 +18,15 @@
   "customizations": {
     "vscode": {
       "extensions": [
-		"formulahendry.auto-close-tag",
-		"streetsidesoftware.code-spell-checker",
-		"usernamehw.errorlens",
-		"dsznajder.es7-react-js-snippets",
-		"VisualStudioExptTeam.vscodeintellicode",
-		"VisualStudioExptTeam.intellicode-api-usage-examples",
-		"yzhang.markdown-all-in-one",
-		"esbenp.prettier-vscode"
-	],
+        "formulahendry.auto-close-tag",
+        "streetsidesoftware.code-spell-checker",
+        "usernamehw.errorlens",
+        "dsznajder.es7-react-js-snippets",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "yzhang.markdown-all-in-one",
+        "esbenp.prettier-vscode"
+      ],
       "settings": {
         "settingsSync.ignoredExtensions": ["*.*"]
       }
