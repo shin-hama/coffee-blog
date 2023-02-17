@@ -10,10 +10,10 @@ type Props = Pick<IBlog['fields'], 'tags' | 'createdAt'>
 const BlogCardDetail: React.FC<Props> = ({ createdAt, tags }) => {
   return (
     <Box>
-      <Typography variant='subtitle1'>{createdAt}</Typography>
       {tags?.map((tag, i) => (
         <Chip key={`${tag}-${i}`} label={tag.fields.title} />
       ))}
+      <Typography variant='subtitle1'>{createdAt}</Typography>
     </Box>
   )
 }
