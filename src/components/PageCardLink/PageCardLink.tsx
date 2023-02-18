@@ -1,8 +1,5 @@
 import * as React from 'react'
 
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
@@ -36,27 +33,25 @@ const PageCardLink: React.FC<Props> = (props) => {
 
   return (
     <NavLink href={url}>
-      <Card>
-        <CardMedia>
-          <div
-            style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}
-          >
-            <ContentfulImage
-              src={thumbnail.fields.file.url}
-              alt=''
-              priority={true}
-              fill
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-        </CardMedia>
-        <CardContent>
-          <Stack spacing={1}>
-            <Typography variant='h6'>{title}</Typography>
-            {renderDetail(sys.contentType.sys.id)}
-          </Stack>
-        </CardContent>
-      </Card>
+      <Stack spacing={2}>
+        <div
+          style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}
+        >
+          <ContentfulImage
+            src={thumbnail.fields.file.url}
+            alt=''
+            priority={true}
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <Stack spacing={1}>
+          <Typography variant='h6' fontWeight='bold'>
+            {title}
+          </Typography>
+          {renderDetail(sys.contentType.sys.id)}
+        </Stack>
+      </Stack>
     </NavLink>
   )
 }

@@ -17,7 +17,7 @@ const BlogCardDetail: React.FC<Props> = ({ createdAt, tags }) => {
       ))}
       <Stack direction='row' alignItems='center' spacing={0.5}>
         <FontAwesomeIcon icon={faPen} />
-        <Typography variant='subtitle1'>{createdAt}</Typography>
+        <Typography variant='subtitle2'>{createdAt}</Typography>
       </Stack>
     </Stack>
   )
