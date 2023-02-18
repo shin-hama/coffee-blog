@@ -49,6 +49,9 @@ export interface ICafeFields {
   /** Title */
   title: string
 
+  /** subTitle */
+  subTitle?: string | undefined
+
   /** Slug */
   slug: string
 
@@ -82,7 +85,7 @@ export interface ICafeFields {
   /** Orders */
   orders: ICafeOrder[]
 
-  /** Instagram */
+  /** InstagramHashTag */
   instagram?: string | undefined
 
   /** Tags */
