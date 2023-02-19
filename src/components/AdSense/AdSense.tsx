@@ -49,7 +49,7 @@ const MultiplexUnit = () => {
       style={{ display: 'block' }}
       data-ad-format='autorelaxed'
       data-ad-client='ca-pub-8908594530879602'
-      data-ad-slot='6941688349'
+      data-ad-slot='6990157981'
     ></ins>
   )
 }
