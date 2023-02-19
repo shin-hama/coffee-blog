@@ -31,7 +31,6 @@ const HomePage: React.FC<Props> = ({ blogs, cafes }) => {
           See More
         </Button>
       </Box>
-      <AdSense unitType='display' />
       <Typography variant='h2'>Cafe Log</Typography>
       <Box>
         <Posts items={cafes} />
