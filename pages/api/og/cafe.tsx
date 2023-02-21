@@ -20,7 +20,7 @@ export default function handler(req: NextRequest) {
       <div
         style={{
           fontSize: 128,
-          background: 'white',
+          background: 'black',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -29,10 +29,62 @@ export default function handler(req: NextRequest) {
           justifyContent: 'center'
         }}
       >
-        <span>Tokyo Cafe Catalog</span>
-        <span>{name}</span>
-        <span>{city}</span>
-        <span>coffee-junkie.jp</span>
+        <div
+          style={{
+            fontSize: 120,
+            fontStyle: 'bold',
+            letterSpacing: '0.025em',
+            color: 'white',
+            marginTop: 60,
+            padding: '0 120px',
+            lineHeight: 1.4,
+            whiteSpace: 'pre-wrap'
+          }}
+        >
+          Tokyo Cafe Catalog
+        </div>
+        <div
+          style={{
+            fontSize: 48,
+            fontStyle: 'bold',
+            letterSpacing: '-0.025em',
+            color: 'white',
+            marginBottom: 60,
+            padding: '0 120px',
+            lineHeight: 1.4,
+            whiteSpace: 'pre-wrap'
+          }}
+        >
+          {name}
+        </div>
+        <div
+          style={{
+            fontSize: 40,
+            fontStyle: 'bold',
+            letterSpacing: '-0.025em',
+            color: 'white',
+            marginBottom: 30,
+            padding: '0 120px',
+            lineHeight: 1.4,
+            whiteSpace: 'pre-wrap'
+          }}
+        >
+          {city}
+        </div>
+        <div
+          style={{
+            fontSize: 28,
+            fontStyle: 'normal',
+            letterSpacing: '-0.025em',
+            color: 'white',
+            marginTop: 30,
+            padding: '0 120px',
+            lineHeight: 1.4,
+            whiteSpace: 'pre-wrap'
+          }}
+        >
+          coffee-junkie.jp
+        </div>
       </div>
     ),
     {
