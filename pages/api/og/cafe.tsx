@@ -19,71 +19,90 @@ export default function handler(req: NextRequest) {
     (
       <div
         style={{
-          fontSize: 128,
-          background: 'black',
+          background: 'darkgrey',
           width: '100%',
           height: '100%',
           display: 'flex',
-          textAlign: 'center',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'space-between',
+          flexDirection: 'column'
         }}
       >
         <div
           style={{
-            fontSize: 120,
-            fontStyle: 'bold',
-            letterSpacing: '0.025em',
-            color: 'white',
-            marginTop: 60,
-            padding: '0 120px',
-            lineHeight: 1.4,
-            whiteSpace: 'pre-wrap'
+            width: '100%',
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
           }}
         >
-          Tokyo Cafe Catalog
+          <div
+            style={{
+              fontSize: 100,
+              fontStyle: 'bold',
+              letterSpacing: '0.025em',
+              color: 'white',
+              marginTop: 0,
+              padding: '0',
+              lineHeight: 1,
+              whiteSpace: 'pre-wrap'
+            }}
+          >
+            Tokyo Cafe Catalog
+          </div>
+          <div
+            style={{
+              fontSize: 60,
+              fontStyle: 'bold',
+              letterSpacing: '-0.025em',
+              color: 'white',
+              marginTop: 0,
+              padding: '0 120px',
+              lineHeight: 1.4,
+              whiteSpace: 'pre-wrap'
+            }}
+          >
+            {name}
+          </div>
         </div>
         <div
           style={{
-            fontSize: 48,
-            fontStyle: 'bold',
-            letterSpacing: '-0.025em',
-            color: 'white',
-            marginBottom: 60,
-            padding: '0 120px',
-            lineHeight: 1.4,
-            whiteSpace: 'pre-wrap'
+            width: '100%',
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
           }}
         >
-          {name}
-        </div>
-        <div
-          style={{
-            fontSize: 40,
-            fontStyle: 'bold',
-            letterSpacing: '-0.025em',
-            color: 'white',
-            marginBottom: 30,
-            padding: '0 120px',
-            lineHeight: 1.4,
-            whiteSpace: 'pre-wrap'
-          }}
-        >
-          {city}
-        </div>
-        <div
-          style={{
-            fontSize: 28,
-            fontStyle: 'normal',
-            letterSpacing: '-0.025em',
-            color: 'white',
-            marginTop: 30,
-            padding: '0 120px',
-            lineHeight: 1.4,
-            whiteSpace: 'pre-wrap'
-          }}
-        >
-          coffee-junkie.jp
+          <div
+            style={{
+              fontSize: 40,
+              fontStyle: 'bold',
+              letterSpacing: '-0.025em',
+              color: 'white',
+              marginTop: 30,
+              padding: '0 120px',
+              lineHeight: 1.4,
+              whiteSpace: 'pre-wrap'
+            }}
+          >
+            {city}
+          </div>
+          <div
+            style={{
+              fontSize: 28,
+              fontStyle: 'normal',
+              letterSpacing: '-0.025em',
+              color: 'white',
+              marginTop: 10,
+              padding: '0 120px',
+              lineHeight: 1.4,
+              whiteSpace: 'pre-wrap'
+            }}
+          >
+            coffee-junkie.jp
+          </div>
         </div>
       </div>
     ),
