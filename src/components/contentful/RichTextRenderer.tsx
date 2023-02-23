@@ -1,4 +1,5 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 
 import {
   Options,
@@ -20,6 +21,11 @@ import ContentfulImage from './ContentfulImage'
 import EntryLinkCard from './EntryLinkCard'
 import { renderInlineEntry } from './InlineEntry/render-inline-entry'
 import TableOfContents from './TableOfContents'
+
+const IFrameWrapper = dynamic(
+  () => import('./Blocks/IFrameWrapper').then((module) => module.IFrameWrapper),
+  { ssr: false }
+)
 
 const renderOption: Options = {
   renderNode: {
@@ -51,9 +57,15 @@ const renderOption: Options = {
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
+      console.log(node)
       if (node.content.length > 1) {
         return children
       }
+      const text = getText(node.content)
+      if (text?.startsWith('<iframe')) {
+        return <IFrameWrapper htmlStr={text} />
+      }
+
       return <Typography paragraph>{children}</Typography>
     },
     [BLOCKS.HEADING_1]: Heading,
