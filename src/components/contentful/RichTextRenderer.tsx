@@ -31,12 +31,19 @@ const renderOption: Options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
-        <Box position='relative' width='100%' sx={{ aspectRatio: '16/9' }}>
+        <Box
+          position='relative'
+          width='100%'
+          mb={2}
+          sx={{ aspectRatio: '16/9' }}
+        >
           <ContentfulImage
             src={node.data.target.fields.file.url}
             alt={node.data.target.fields.title}
             fill
-            style={{ objectFit: 'contain' }}
+            style={{
+              objectFit: 'cover'
+            }}
           />
         </Box>
       )
@@ -57,7 +64,6 @@ const renderOption: Options = {
       }
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      console.log(node)
       if (node.content.length > 1) {
         return children
       }
