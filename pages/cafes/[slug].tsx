@@ -49,7 +49,7 @@ const Cafe: React.FC<Props> = ({ page, items }) => {
 
   return (
     <Layout
-      title={page.fields.title}
+      title={`${page.fields.title} - ${page.fields.subTitle}`}
       description={page.fields.description || page.fields.title}
       image={page.fields.thumbnail.fields.file.url}
     >
