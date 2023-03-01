@@ -21,7 +21,7 @@ const PageHeader: React.FC<Props> = ({
   return (
     <Stack spacing={1} alignItems='center' width='100%'>
       <Typography variant='h2'>{title}</Typography>
-      {subTitle && <Typography variant='h6'>{subTitle}</Typography>}
+      <Typography variant='h6'>{subTitle}</Typography>
       <Stack direction='row' spacing={2}>
         <Chip label={city} />
         <Typography variant='subtitle1'>Visited at: {visited}</Typography>

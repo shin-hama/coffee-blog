@@ -50,7 +50,7 @@ export interface ICafeFields {
   title: string
 
   /** subTitle */
-  subTitle?: string | undefined
+  subTitle: string
 
   /** Slug */
   slug: string

@@ -9,8 +9,8 @@ type Props = Pick<ICafeFields, 'city' | 'subTitle'>
 const CafeCardDetail: React.FC<Props> = ({ city, subTitle }) => {
   return (
     <Box>
-      <Typography variant='subtitle2'>{city}</Typography>
       {subTitle && <Typography variant='subtitle1'>{subTitle}</Typography>}
+      <Typography variant='subtitle2'>{city}</Typography>
     </Box>
   )
 }
