@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography'
 import { IBlog, ICafe } from '../../@types/contentful'
 import AdSense from '../AdSense'
 import { NavLink } from '../Link'
+import BorderedHead from './BorderedHead'
 import Posts from './Posts'
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 const HomePage: React.FC<Props> = ({ blogs, cafes }) => {
   return (
     <Stack spacing={4}>
-      <Typography variant='h2'>Blog</Typography>
+      <BorderedHead>Blog Posts</BorderedHead>
       <Box>
         <Posts items={blogs} />
       </Box>
@@ -31,7 +32,7 @@ const HomePage: React.FC<Props> = ({ blogs, cafes }) => {
           See More
         </Button>
       </Box>
-      <Typography variant='h2'>Cafe Log</Typography>
+      <BorderedHead>Cafe Log</BorderedHead>
       <Box>
         <Posts items={cafes} />
       </Box>
