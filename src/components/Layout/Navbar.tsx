@@ -10,7 +10,7 @@ import { NavLink } from '../Link'
 const Navbar = () => {
   return (
     <Box minWidth='100%' bgcolor={(theme) => theme.palette.grey[100]}>
-      <Container maxWidth='lg'>
+      <Container maxWidth='lg' disableGutters>
         <Stack direction='row' spacing={2}>
           <Button color='inherit' LinkComponent={NavLink} href='/about'>
             About
