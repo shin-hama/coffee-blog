@@ -33,8 +33,7 @@ export const NavLink: React.FC<Props> = React.forwardRef(function NavLink(
   ref
 ) {
   const style = {
-    color: 'inherit',
     textDecoration: 'none'
   }
-  return <Link ref={ref} {...props} sx={style} />
+  return <Link ref={ref} color='inherit' sx={style} {...props} />
 })
