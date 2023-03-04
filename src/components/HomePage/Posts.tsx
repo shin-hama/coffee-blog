@@ -14,11 +14,11 @@ const Posts: React.FC<Props> = ({ items }) => {
     <Grid container spacing={4}>
       {items.map((item, i) => (
         <React.Fragment key={item.sys.id}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} md={4}>
             <PageCardLink {...item} />
           </Grid>
           {i === Math.ceil(items.length / 2) - 1 && (
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} md={4}>
               <AdSense unitType='infeed' />
             </Grid>
           )}

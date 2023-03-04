@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 
+import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 
 import { siteConfig } from '../../../site.config'
@@ -23,15 +24,17 @@ const BlogLayout: React.FC<Props> = ({ post, recommendItems, children }) => {
   }, [router.asPath])
 
   return (
-    <Stack spacing={4}>
-      <Breadcrumbs currentPost={post} />
-      {children}
-      <Bio />
-      <ShareButtons msg={post.fields.title} url={url} />
-      <AdSense unitType='multiplex' />
-      <RecommendLinks items={recommendItems} />
-      <AdSense />
-    </Stack>
+    <Container disableGutters maxWidth='md'>
+      <Stack spacing={4}>
+        <Breadcrumbs currentPost={post} />
+        {children}
+        <Bio />
+        <ShareButtons msg={post.fields.title} url={url} />
+        <AdSense unitType='multiplex' />
+        <RecommendLinks items={recommendItems} />
+        <AdSense />
+      </Stack>
+    </Container>
   )
 }
 

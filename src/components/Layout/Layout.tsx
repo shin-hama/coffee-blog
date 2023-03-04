@@ -22,10 +22,10 @@ const Layout: React.FC<Props> = ({ children, title, description, image }) => {
       <Header />
       <Toolbar />
       <Navbar />
-      <Container maxWidth={false}>
+      <Container maxWidth={false} sx={{ pt: 4 }}>
         <Stack spacing={4}>
           <main>
-            <Box mx='auto' maxWidth='md'>
+            <Box mx='auto' maxWidth='lg'>
               {children}
             </Box>
           </main>
