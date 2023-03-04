@@ -46,7 +46,7 @@ export interface IBlog extends Entry<IBlogFields> {
 }
 
 export interface ICafeFields {
-  /** Title */
+  /** Name */
   title: string
 
   /** subTitle */

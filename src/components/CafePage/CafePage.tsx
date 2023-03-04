@@ -24,7 +24,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         {cafe.recommends && (
           <Box>
             <Typography component='h2' variant='h2'>
-              おすすめポイント
+              {cafe.title}のおすすめポイント
             </Typography>
             <ul>
               {cafe.recommends.map((line) => (
@@ -38,7 +38,7 @@ const CafePage: React.FC<Props> = (cafe) => {
           </Box>
         )}
         <AdSense unitType='article' />
-        <Typography variant='h2'>レビュー</Typography>
+        <Typography variant='h2'>{cafe.title}を訪れた感想</Typography>
         <RichTextRenderer doc={cafe.content} />
         <Typography variant='h2'>注文品</Typography>
         <Box>
@@ -51,7 +51,7 @@ const CafePage: React.FC<Props> = (cafe) => {
           </Grid>
         </Box>
         {cafe.instagram && <Research name={cafe.instagram} />}
-        <Typography variant='h2'>Cafe 情報</Typography>
+        <Typography variant='h2'>{cafe.title}の営業情報</Typography>
         <CafeInformation {...cafe.information.fields} />
       </Stack>
     </article>
