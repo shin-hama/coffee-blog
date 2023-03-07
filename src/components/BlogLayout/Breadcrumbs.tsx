@@ -13,7 +13,19 @@ const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
   const postType = currentPost.sys.contentType.sys.id
   return (
     <MuiBreadcrumbs
-      sx={{ textDecoration: 'none', color: (theme) => theme.palette.grey[600] }}
+      sx={{
+        overflowX: 'scroll',
+        textDecoration: 'none',
+        color: (theme) => theme.palette.grey[600],
+        ol: {
+          overflowX: 'scroll',
+          flexWrap: "nowrap"
+
+        },
+        li: {
+          whiteSpace: 'nowrap'
+        }
+      }}
     >
       <Link href='/' sx={{ color: 'inherit' }}>
         home
@@ -21,7 +33,7 @@ const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
       <Link href={`/${postType}s`} sx={{ color: 'inherit' }}>
         {postType}
       </Link>
-      <Typography>{currentPost.fields.title}</Typography>
+      <Typography noWrap>{currentPost.fields.title}</Typography>
     </MuiBreadcrumbs>
   )
 }
