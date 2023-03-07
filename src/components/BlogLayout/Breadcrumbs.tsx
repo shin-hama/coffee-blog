@@ -3,25 +3,51 @@ import * as React from 'react'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import Typography from '@mui/material/Typography'
 
-import { IPost } from '../../@types/verify-types'
 import { Link } from '../Link'
+import { useRouter } from 'next/router'
+
+const breadcrumbNameMap: Record<string, string> = {
+  blogs: "blogs",
+  cafes: "cafes"
+}
 
 type Props = {
-  currentPost: IPost
+  title: string
 }
-const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
-  const postType = currentPost.sys.contentType.sys.id
+const Breadcrumbs: React.FC<Props> = ({ title: title }) => {
+  const router = useRouter()
+  const pathnames = router.asPath.split("/").filter((x) => x)
+
   return (
     <MuiBreadcrumbs
-      sx={{ textDecoration: 'none', color: (theme) => theme.palette.grey[600] }}
+      sx={{
+        overflowX: 'scroll',
+        textDecoration: 'none',
+        color: (theme) => theme.palette.grey[600],
+        ol: {
+          overflowX: 'scroll',
+          flexWrap: "nowrap"
+        },
+        li: {
+          whiteSpace: 'nowrap'
+        }
+      }}
     >
-      <Link href='/' sx={{ color: 'inherit' }}>
-        home
+      <Link href='/' color="inherit">
+        Home
       </Link>
-      <Link href={`/${postType}s`} sx={{ color: 'inherit' }}>
-        {postType}
-      </Link>
-      <Typography>{currentPost.fields.title}</Typography>
+      {pathnames.map((path, index) => {
+        const last = index === pathnames.length - 1;
+        const to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+        return last ? (
+          <Typography noWrap>{title}</Typography>
+        ) : (
+          <Link href={to} key={to} color="inherit">
+            {breadcrumbNameMap[to] || path}
+          </Link>
+        )
+      })}
     </MuiBreadcrumbs>
   )
 }
