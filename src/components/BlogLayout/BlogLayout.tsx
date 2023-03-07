@@ -26,7 +26,7 @@ const BlogLayout: React.FC<Props> = ({ post, recommendItems, children }) => {
   return (
     <Container disableGutters maxWidth='md'>
       <Stack spacing={4}>
-        <Breadcrumbs currentPost={post} />
+        <Breadcrumbs title={post.fields.title} />
         {children}
         <Bio />
         <ShareButtons msg={post.fields.title} url={url} />

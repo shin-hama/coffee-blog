@@ -3,7 +3,6 @@ import * as React from 'react'
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs'
 import Typography from '@mui/material/Typography'
 
-import { IPost } from '../../@types/verify-types'
 import { Link } from '../Link'
 import { useRouter } from 'next/router'
 
@@ -13,9 +12,9 @@ const breadcrumbNameMap: Record<string, string> = {
 }
 
 type Props = {
-  currentPost: IPost
+  title: string
 }
-const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
+const Breadcrumbs: React.FC<Props> = ({ title: title }) => {
   const router = useRouter()
   const pathnames = router.asPath.split("/").filter((x) => x)
 
@@ -35,14 +34,14 @@ const Breadcrumbs: React.FC<Props> = ({ currentPost }) => {
       }}
     >
       <Link href='/' color="inherit">
-        home
+        Home
       </Link>
       {pathnames.map((path, index) => {
         const last = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join('/')}`;
 
         return last ? (
-          <Typography noWrap>{currentPost.fields.title}</Typography>
+          <Typography noWrap>{title}</Typography>
         ) : (
           <Link href={to} key={to} color="inherit">
             {breadcrumbNameMap[to] || path}
