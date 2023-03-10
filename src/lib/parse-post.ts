@@ -1,15 +1,8 @@
 import { IPost, isBlogContent, isCafeContent } from '../@types/verify-types'
+import { PageCardLinkProps } from '../components/PageCardLink/PageCardLink'
 import { buildPostUrl } from './build-post-url'
 
-type ParsedCardLinkProps = {
-  title: string
-  href: string
-  img: string
-  subTitle?: string
-  tag?: string
-  createdAt?: string
-}
-export const parseCardLinkProps = (post: IPost): ParsedCardLinkProps => {
+export const parseCardLinkProps = (post: IPost): PageCardLinkProps => {
   const url = buildPostUrl(post)
   const { title, thumbnail, tags } = post.fields
 

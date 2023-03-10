@@ -7,16 +7,25 @@ import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { IPost } from '../../@types/verify-types'
-import { parseCardLinkProps } from '../../lib/parse-post'
 import { NavLink } from '../Link'
 import ContentfulImage from '../contentful/ContentfulImage'
 
-type Props = IPost
-const PageCardLink: React.FC<Props> = (props) => {
-  const { title, href, img, subTitle, tag, createdAt } =
-    parseCardLinkProps(props)
-
+export type PageCardLinkProps = {
+  title: string
+  href: string
+  img: string
+  subTitle?: string
+  tag?: string
+  createdAt?: string
+}
+const PageCardLink: React.FC<PageCardLinkProps> = ({
+  title,
+  href,
+  img,
+  subTitle,
+  tag,
+  createdAt
+}) => {
   return (
     <NavLink href={href}>
       <Stack spacing={2}>
@@ -41,11 +50,13 @@ const PageCardLink: React.FC<Props> = (props) => {
             )}
           </Box>
           <Stack spacing={2} direction='row' alignItems='center'>
-            <Chip label={tag} />
-            <Stack direction='row' alignItems='center' spacing={0.5}>
-              <FontAwesomeIcon icon={faPen} />
-              <Typography variant='subtitle2'>{createdAt}</Typography>
-            </Stack>
+            {tag && <Chip label={tag} />}
+            {createdAt && (
+              <Stack direction='row' alignItems='center' spacing={0.5}>
+                <FontAwesomeIcon icon={faPen} />
+                <Typography variant='subtitle2'>{createdAt}</Typography>
+              </Stack>
+            )}
           </Stack>
         </Stack>
       </Stack>
