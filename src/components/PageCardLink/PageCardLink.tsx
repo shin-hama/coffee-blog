@@ -1,44 +1,39 @@
 import * as React from 'react'
 
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import { IBlogFields, ICafeFields } from '../../@types/contentful'
-import { IPost } from '../../@types/verify-types'
-import { buildPostUrl } from '../../lib/build-post-url'
 import { NavLink } from '../Link'
 import ContentfulImage from '../contentful/ContentfulImage'
-import BlogCardDetail from './BlogCardDetail'
-import CafeCardDetail from './CafeCardDetail'
 
-type Props = IPost
-const PageCardLink: React.FC<Props> = (props) => {
-  const { sys, fields } = props
-  const { title, thumbnail } = fields
-
-  const renderDetail = (id: IPost['sys']['id']) => {
-    switch (id) {
-      case 'blog':
-        return <BlogCardDetail {...(fields as IBlogFields)} />
-      case 'cafe':
-        return <CafeCardDetail {...(fields as ICafeFields)} />
-      default:
-        console.error(`Not supported content`)
-
-        throw Error('Not supported content')
-    }
-  }
-
-  const url = buildPostUrl(props)
-
+export type PageCardLinkProps = {
+  title: string
+  href: string
+  img: string
+  subTitle?: string
+  tag?: string
+  createdAt?: string
+}
+const PageCardLink: React.FC<PageCardLinkProps> = ({
+  title,
+  href,
+  img,
+  subTitle,
+  tag,
+  createdAt
+}) => {
   return (
-    <NavLink href={url}>
+    <NavLink href={href}>
       <Stack spacing={2}>
         <div
           style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}
         >
           <ContentfulImage
-            src={thumbnail.fields.file.url}
+            src={img}
             alt=''
             priority={true}
             fill
@@ -46,10 +41,23 @@ const PageCardLink: React.FC<Props> = (props) => {
           />
         </div>
         <Stack spacing={1}>
-          <Typography variant='h6' fontWeight='bold'>
-            {title}
-          </Typography>
-          {renderDetail(sys.contentType.sys.id)}
+          <Box>
+            <Typography variant='h6' fontWeight='bold'>
+              {title}
+            </Typography>
+            {subTitle && (
+              <Typography variant='subtitle2'>{subTitle}</Typography>
+            )}
+          </Box>
+          <Stack spacing={2} direction='row' alignItems='center'>
+            {tag && <Chip label={tag} />}
+            {createdAt && (
+              <Stack direction='row' alignItems='center' spacing={0.5}>
+                <FontAwesomeIcon icon={faPen} />
+                <Typography variant='subtitle2'>{createdAt}</Typography>
+              </Stack>
+            )}
+          </Stack>
         </Stack>
       </Stack>
     </NavLink>

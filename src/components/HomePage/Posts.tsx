@@ -3,6 +3,7 @@ import * as React from 'react'
 import Grid from '@mui/material/Grid'
 
 import { IPost } from '../../@types/verify-types'
+import { parseCardLinkProps } from '../../lib/parse-post'
 import AdSense from '../AdSense'
 import PageCardLink from '../PageCardLink'
 
@@ -15,7 +16,7 @@ const Posts: React.FC<Props> = ({ items }) => {
       {items.map((item, i) => (
         <React.Fragment key={item.sys.id}>
           <Grid item xs={12} sm={6} md={4}>
-            <PageCardLink {...item} />
+            <PageCardLink {...parseCardLinkProps(item)} />
           </Grid>
           {i === Math.ceil(items.length / 2) - 1 && (
             <Grid item xs={12} sm={6} md={4}>
