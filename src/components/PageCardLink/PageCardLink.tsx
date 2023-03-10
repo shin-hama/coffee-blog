@@ -7,25 +7,15 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { IPost } from '../../@types/verify-types'
+import { parseCardLinkProps } from '../../lib/parse-post'
 import { NavLink } from '../Link'
 import ContentfulImage from '../contentful/ContentfulImage'
 
-type Props = IPost & {
-  title: string
-  href: string
-  img: string
-  subTitle?: string
-  tag?: string
-  createdAt?: string
-}
-const PageCardLink: React.FC<Props> = ({
-  title,
-  href,
-  img,
-  subTitle,
-  tag,
-  createdAt
-}) => {
+type Props = IPost
+const PageCardLink: React.FC<Props> = (props) => {
+  const { title, href, img, subTitle, tag, createdAt } =
+    parseCardLinkProps(props)
+
   return (
     <NavLink href={href}>
       <Stack spacing={2}>
