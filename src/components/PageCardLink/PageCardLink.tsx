@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -31,10 +32,14 @@ const PageCardLink: React.FC<Props> = (props) => {
           />
         </div>
         <Stack spacing={1}>
-          <Typography variant='h6' fontWeight='bold'>
-            {title}
-          </Typography>
-          {subTitle && <Typography variant='subtitle1'>{subTitle}</Typography>}
+          <Box>
+            <Typography variant='h6' fontWeight='bold'>
+              {title}
+            </Typography>
+            {subTitle && (
+              <Typography variant='subtitle2'>{subTitle}</Typography>
+            )}
+          </Box>
           <Stack spacing={2} direction='row' alignItems='center'>
             <Chip label={tag} />
             <Stack direction='row' alignItems='center' spacing={0.5}>
