@@ -23,9 +23,16 @@ const Order: React.FC<Props> = ({ item }) => {
         />
       </Box>
       <CardContent>
-        <Typography variant='h4'>{item.name}</Typography>
+        <Typography variant='body1' fontWeight='bold'>
+          {item.name}
+        </Typography>
         <Typography variant='subtitle2'>{item.price} 円</Typography>
       </CardContent>
+        <Box display='flex' flexDirection='column' px={1}>
+          <Typography textAlign='end' variant='caption'>
+            {item.ordered}
+          </Typography>
+        </Box>
     </Card>
   )
 }
