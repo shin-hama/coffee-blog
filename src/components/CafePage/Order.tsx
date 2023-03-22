@@ -3,7 +3,6 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import { ICafeOrderFields } from '../../@types/contentful'
@@ -24,14 +23,16 @@ const Order: React.FC<Props> = ({ item }) => {
         />
       </Box>
       <CardContent>
-        <Stack>
-          <Typography variant='h4'>{item.name}</Typography>
-          <Typography variant='subtitle2'>{item.price} 円</Typography>
+        <Typography variant='body1' fontWeight='bold'>
+          {item.name}
+        </Typography>
+        <Typography variant='subtitle2'>{item.price} 円</Typography>
+      </CardContent>
+        <Box display='flex' flexDirection='column' px={1}>
           <Typography textAlign='end' variant='caption'>
             {item.ordered}
           </Typography>
-        </Stack>
-      </CardContent>
+        </Box>
     </Card>
   )
 }

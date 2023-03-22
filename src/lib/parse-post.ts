@@ -5,12 +5,13 @@ import { buildPostUrl } from './build-post-url'
 export const parseCardLinkProps = (post: IPost): PageCardLinkProps => {
   const url = buildPostUrl(post)
   const { title, thumbnail, tags } = post.fields
+  const img = thumbnail?.fields.file.url
 
   if (isBlogContent(post)) {
     const { createdAt } = post.fields
     return {
       title,
-      img: thumbnail.fields.file.url,
+      img,
       href: url,
       tag: tags?.[0]?.fields.title,
       createdAt
@@ -20,7 +21,7 @@ export const parseCardLinkProps = (post: IPost): PageCardLinkProps => {
     return {
       title,
       subTitle,
-      img: thumbnail.fields.file.url,
+      img,
       href: url,
       tag: city,
       createdAt: visited
