@@ -44,7 +44,7 @@ const CafePage: React.FC<Props> = (cafe) => {
         <Box>
           <Grid container spacing={2}>
             {cafe.orders.map((item) => (
-              <Grid item key={item.sys.id} xs={6} md={4}>
+              <Grid item key={item.sys.id} xs={12} sm={6} md={4}>
                 <Order item={item.fields} />
               </Grid>
             ))}
