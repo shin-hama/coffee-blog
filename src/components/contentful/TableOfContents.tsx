@@ -38,7 +38,9 @@ const LinkToContent: React.FC<ItemProps> = ({
       <Link to={anchor} activeClass='active' smooth={true} duration={500}>
         <Stack direction='row' spacing={1} alignItems='baseline'>
           <FontAwesomeIcon size='2xs' icon={icon} color='#9D331F' />
-          <Typography variant='subtitle2'>{children}</Typography>
+          <Typography variant='subtitle2' fontWeight='bold'>
+            {children}
+          </Typography>
         </Stack>
       </Link>
     </ListItemButton>
@@ -47,17 +49,17 @@ const LinkToContent: React.FC<ItemProps> = ({
 
 const renderOption: Options = {
   renderNode: {
-    [BLOCKS.HEADING_2]: (node, children) => {
+    [BLOCKS.HEADING_2]: (node) => {
       const text = getText(node.content)
       const anchor = text ? createAnchor(text) : ''
-      return <LinkToContent anchor={anchor}>{children}</LinkToContent>
+      return <LinkToContent anchor={anchor}>{text}</LinkToContent>
     },
-    [BLOCKS.HEADING_3]: (node, children) => {
+    [BLOCKS.HEADING_3]: (node) => {
       const text = getText(node.content)
       const anchor = text ? createAnchor(text) : ''
       return (
         <LinkToContent anchor={anchor} depth={1}>
-          {children}
+          {text}
         </LinkToContent>
       )
     }
@@ -93,7 +95,12 @@ const TableOfContents: React.FC<Props> = ({ doc }) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant='h4' component='h4' textAlign='center'>
+        <Typography
+          variant='h4'
+          component='h4'
+          textAlign='center'
+          fontWeight='bold'
+        >
           目次
         </Typography>
         <List dense>{documentToReactComponents(document, renderOption)}</List>
